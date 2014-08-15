@@ -17,6 +17,7 @@
 \newcommand{\doctitle}{Tentalösningar}
 
 \newcommand{\mhb}[1]{$\beta_{\text{#1}}$}     % Mathematics Handbook Beta
+\newcommand{\bl}[1]{$\text{BL}_{\text{#1}}$}  % Bengt Lennartsson
 
 
 
@@ -213,6 +214,8 @@ Detta har vi alltså löst då vi struntat i den tidsfördröjning som fanns med
 
 
 \subsection{1b}
+Teorin bakom detta står på \bl{sid 388}.\\\\
+%
 I det allmänna fallet så gäller
 \begin{align*}
   \dot{x}(t) =~& Ax(t) + Bu(t) \\
@@ -225,39 +228,38 @@ och i vårt fall så har vi
 \end{align*}
 %
 %
-Polerna kan vi räkna ut med $\det(\lambda I-A) = 0$.\\
-\oklarhet{Referens till det?}
+Polerna kan vi enligt ekvation 3.15 på \bl{sid 92} räkna ut med $\det(sI-A) = 0$. Hur man räknar ut determinanter står på \mhb{sid 93}.
 %
 \begin{align*}
-  \det(\lambda I-A) = 0 \Longleftrightarrow \\
-  0 = \det \left( \begin{bmatrix}\lambda & 0 \\ 0 & \lambda\end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} \right) = \det \left( \begin{bmatrix}\lambda+4 & 3 \\ -1 & \lambda\end{bmatrix} \right) =\\
-  (\lambda+4)\lambda - 3(-1) = \lambda^2 + 4\lambda + 3 = 0\\
-  \lambda=-\frac{4}{2} \pm \sqrt{\left(\frac{4}{2}\right)^2 - 3}\\
-  \lambda=-2 \pm 1\\
-  \lambda_1=-3, \qquad \lambda_2=-1\\
+  \det(sI-A) = 0 \Longleftrightarrow \\
+  0 = \det \left( \begin{bmatrix}s & 0 \\ 0 & s\end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} \right) = \det \left( \begin{bmatrix}s+4 & 3 \\ -1 & s\end{bmatrix} \right) =\\
+  (s+4)s - 3(-1) = s^2 + 4s + 3 = 0\\
+  s=-\frac{4}{2} \pm \sqrt{\left(\frac{4}{2}\right)^2 - 3}\\
+  s=-2 \pm 1\\
+  s_1=-3, \qquad s_2=-1\\
 \end{align*}
 %
 %
 \oklarhet{Referens till polavstånd vs. hastighet på systemet?}\\
-Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $\lambda_2=-1$. Detta innebär att vi vill placera den långsamma polen $\lambda_2$ i den snabba polen $\lambda_1$. Alltså sätter vi att $\lambda_1 = \lambda_2 = -3$. Den karakteristiska ekvationen blir då $(\lambda+3)^2 = \lambda^2 + 6\lambda + 9$.
+Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $s_2=-1$. Detta innebär att vi vill placera den långsamma polen $s_2$ i den snabba polen $s_1$. Alltså sätter vi att $s_1 = s_2 = -3$. Har vi båda polerna i $-3$ så blir den karakteristiska ekvationen $\alpha_c(s) = (s+3)^2 = s^2 + 6s + 9$.\\\\
 %
 %
-Vi räknar nu\\
-\oklarhet{Referens till detta?}
+Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), deder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, den karakteristiska ekvationen vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
 %
 \begin{align*}
-  \det(\lambda I - (A - BL)) = \det\left(\begin{bmatrix}\lambda & 0 \\ 0 & \lambda \end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} + \begin{bmatrix}1 \\ 0\end{bmatrix} \begin{bmatrix}l_1 & l_2\end{bmatrix} \right) = \\
-  \det \left(\begin{bmatrix}\lambda+4 & 3 \\ -1 & \lambda \end{bmatrix} + \begin{bmatrix}l_1 & l_2 \\ 0 & 0\end{bmatrix} \right) = \det \left(\begin{bmatrix}\lambda+4+l_1 & 3+l_2 \\ -1 & \lambda\end{bmatrix} \right) = \\
-  (\lambda+4+l_1)\lambda - (3+l_2)(-1) = \\
-  \lambda^2 +4\lambda + l_1\lambda + 3 + l_2 = \lambda^2 + (4+l_1)\lambda + (3 + l_2)
+  \det(s I - A + BL) = \det\left(\begin{bmatrix}s & 0 \\ 0 & s \end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} + \begin{bmatrix}1 \\ 0\end{bmatrix} \begin{bmatrix}l_1 & l_2\end{bmatrix} \right) = \\
+  \det \left(\begin{bmatrix}s+4 & 3 \\ -1 & s \end{bmatrix} + \begin{bmatrix}l_1 & l_2 \\ 0 & 0\end{bmatrix} \right) = \det \left(\begin{bmatrix}s+4+l_1 & 3+l_2 \\ -1 & s\end{bmatrix} \right) = \\
+  (s+4+l_1)s - (3+l_2)(-1) = \\
+  s^2 +4s + l_1s + 3 + l_2 = s^2 + (4+l_1)s + (3 + l_2)
 \end{align*}
 %
-Detta är lika med den karakteristiska ekvationen, varifrån vi kan identifiera värden på $l_1$ och $l_2$:
+Detta är lika med den karakteristiska ekvationen ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
 %
 \begin{eqnarray*}
-  \lambda^2 + &(4+l_1)\lambda &+ (3 + l_2) = \\
-  \lambda^2 + &6\lambda &+ 9\\
+  s^2 + &(4+l_1)s &+ (3 + l_2) = \\
+  s^2 + &6s &+ 9\\
 \end{eqnarray*}
+\vspace{-14mm}
 \begin{align*}
   \left\{ \begin{array}{ll}
   4+l_1 = 6\\
@@ -790,11 +792,11 @@ Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$) och \mh
 \end{align*}
 %
 %
-Vi ersätter $s$ med $i\omega$ (det vill säga går över från Laplacedomänen till Fourierdomänen). Från Eulers samband på \mhb{sid 62} ser vi att $e^{-i\theta} = \cos\theta - i\sin\theta$.
+Vi ersätter $s$ med $i\omega$ (det vill säga går över från Laplacedomänen till Fourierdomänen).
 %
 %
 \begin{align*}
-  G(i\omega) = \frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)} = \frac{3(\cos(-2\omega) -i\sin(-2\omega))}{(i\omega + 1)(i\omega + 2)}
+  G(i\omega) = \frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)}
 \end{align*}
 %
 %
@@ -802,44 +804,79 @@ På \mhb{sid 339} regel 7 under `Continuous Systems' ser vi att med en insignal 
 \oklarhet{Är det utsignalen som blir såhär?}
 Hur vi räknar ut $|G(i\omega)|$ framgår av \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. Hur vi räknar ut $\arg\{ G(i\omega) \}$ framgår av \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$.
 
-Vi börjar med att räkna ut $|G(i\omega)|$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$.
+Vi börjar med att räkna ut $|G(i\omega)|$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$.
 \begin{align*}
-  |G(i\omega)| = \left|\frac{3(\cos(-2\omega) +(-1)i\sin(-2\omega))}{(i\omega + 1)(i\omega + 2)}\right| = \\
-  \frac{|3|\cdot|(\cos(-2\omega) + (-1)i\sin(-2\omega))|}{|(i\omega + 1)|\cdot|(i\omega + 2)|} = \\
-  \frac{3\sqrt{\cos^2(-2\omega) + (-1)^2\sin^2(-2\omega)}}{\sqrt{\omega^2 + 1^2}\sqrt{\omega^2 + 2^2}} = \\
-  \frac{3}{\sqrt{\omega^2 + 1}\sqrt{\omega^2 + 4}}
+  |G(i\omega)| = \left|\frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)}\right| = \\
+  \frac{|3|\cdot|e^{-2i\omega}|}{|(i\omega + 1)|\cdot|(i\omega + 2)|} = \\
+  \frac{3}{\sqrt{\omega^2 + 1^2}\sqrt{\omega^2 + 2^2}}
 \end{align*}
 
-I det sista steget så nyttjar vi trigonometriska ettan (\mhb{sid 127}: $\sin^2 \alpha + \cos^2 \alpha = 1$).
-
-Vi räknar nu ut $\arg\{ G(i\omega) \}$. På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$.
+Vi räknar nu ut $\arg\{ G(i\omega) \}$. På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$. Vi ser också att $\arg \{e^{i\theta}\} = \theta$.
 
 \begin{align*}
-  \arg\{ G(i\omega) \} = \arg \left\{ \frac{3(\cos(-2\omega) -i\sin(-2\omega))}{(i\omega + 1)(i\omega + 2)} \right\} = \\
-  \arg\{ 3(\cos(-2\omega) -i\sin(-2\omega)) \} - \arg\{ (i\omega + 1)(i\omega + 2) \} = \\
-  \arg\{ 3\cos(-2\omega) - 3i\sin(-2\omega) \} - (\arg\{ i\omega + 1\} + \arg\{ i\omega + 2 \}) = \\
-  \arctan\left( \frac{-3 \sin(-2\omega)}{3\cos(-2\omega)} \right ) -(\arctan\frac{\omega}{1} + \arctan\frac{\omega}{2}) = \\
-  \arctan\left( \frac{- \sin(-2\omega)}{\cos(-2\omega)} \right ) -\arctan\omega - \arctan\frac{\omega}{2}
-\end{align*}
-
-Vi gör två saker med termen $\arctan\left( \frac{- \sin(-2\omega)}{\cos(-2\omega)} \right )$. Enligt \mhb{sid 131} så gäller $\arctan(-x) = -\arctan(x)$, så vi flyttar ut minustecknet. Vi ser också att $\frac{\sin \alpha}{\cos \alpha} = \tan \alpha$ (definitionen på \mhb{sid 125}). Vi får då $-\arctan(\tan (-2\omega))$. Då $\arctan x$ är invers av $\tan x$, så tar dessa ut varandra. Vi får $-\arctan(\tan (-2\omega)) = -(-2\omega) = 2\omega$. Alltså:
-
-\oklarhet{$\arctan(\tan (x)) = x$ gäller bara i intervallet $x \in (-\frac{\pi}{2}, \frac{\pi}{2})$. Varför får vi använda det?}
-
-\begin{align*}
-  \arg\{ G(i\omega) \} = 2\omega -\arctan\omega - \arctan\frac{\omega}{2}
+  \arg\{ G(i\omega) \} = \arg \left\{ \frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)} \right\} = \\
+  \arg\{ 3e^{-2i\omega} \} - \arg\{ (i\omega + 1)(i\omega + 2) \} = \\
+  \arg\{ 3 \} + \arg\{ e^{-2i\omega} \} - (\arg\{ i\omega + 1\} + \arg\{ i\omega + 2 \}) = \\
+  \arctan \frac{0}{3} -2\omega -(\arctan\frac{\omega}{1} + \arctan\frac{\omega}{2}) = \\
+  -2\omega -\arctan\omega - \arctan\frac{\omega}{2}
 \end{align*}
 
 Vi kan nu skriva upp det hela på önskad form:
 
 \begin{align*}
   |G(i\omega)| \sin(\omega t + \arg\{ G(i\omega) \}) = \\
-  \frac{3}{\sqrt{\omega^2 + 1}\sqrt{\omega^2 + 4}} \sin(\omega t + 2\omega -\arctan\omega - \arctan\frac{\omega}{2})
+  \frac{3}{\sqrt{\omega^2 + 1}\sqrt{\omega^2 + 4}} \sin(\omega t - 2\omega -\arctan\omega - \arctan\frac{\omega}{2})
 \end{align*}
 
-\oklarhet{Stämmer inte helt med facit! Han har minustecken framför $2\omega$!}
 \oklarhet{Varför gäller detta enbart när det är strikt stabilt? Nämn det som nödvändigt kriterium!}
 \oklarhet{Kommentera begreppet ``stora $t$''.}
+
+
+\section{Tenta 2013-04-05}
+\subsection{5a}
+
+\begin{align*}
+  G(s) = \frac{e^{-s}}{s(s+1)}
+\end{align*}
+
+Känd formel:
+\begin{align*}
+  \varphi_m - 180^\circ = \arg\{G(j\omega_c)\}
+\end{align*}
+
+På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$.
+
+Överkorsningsfrekvensen ska vara $\omega_c \geq 1$ rad/s. Om vi ansätter problemet med $\omega_c = 1$:
+
+\begin{align*}
+  \arg\{G(j\cdot 1)\} = \arg\{e^{-j\cdot 1}\} - (\arg\{j\cdot 1\} + \arg\{j\cdot 1 + 1\})
+\end{align*}
+
+På \mhb{sid 62} ser vi att $\arg\{e^{i\theta}\} = \theta$. Hur vi räknar ut $\arg\{ G(i\omega) \}$ framgår av \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$.
+
+\begin{align*}
+  \arg\{G(j\cdot 1)\} = \arg\{e^{-j\cdot 1}\} - (\arg\{j\cdot 1\} + \arg\{j\cdot 1 + 1\}) = \\
+  -1 - \arctan\frac{1}{0} - \arctan\frac{1}{1} = -1 -\arctan ( \infty ) - \arctan 1 = -1 -\frac{\pi}{2} -\frac{\pi}{4} \text{rad}
+\end{align*}
+
+Värdena på arctan kommer från tabellen på \mhb{sid 130}. På \mhb{sid 125} ser vi hur vi konverterar mellan grader och radianer.
+
+\begin{align*}
+  \arg\{G(j\cdot 1)\} = -1 -\frac{\pi}{2} -\frac{\pi}{4} \text{rad} = (-1 -\frac{\pi}{2} -\frac{\pi}{4})\frac{180}{\pi}^\circ \approx -192.3^\circ
+\end{align*}
+
+Fasmarginalen som systemet redan har:
+\begin{align*}
+  \Phi_m - 180^\circ = \arg\{G(j\omega_c)\} \approx 192.3^\circ\\
+  \Phi_m \approx 180^\circ - 192.3^\circ = -12.3^\circ
+\end{align*}
+
+\begin{align*}
+  \varphi_{m_{\text{ny}}} = 30^\circ - \Phi_m \approx 42.3^\circ
+\end{align*}
+
+Vi ska alltså höja fasmarginalen med $42.3^\circ$. Att höja fasmarginalen innebär att vi ska använda en PD-regulator.
+
 
 
 \section{Block diagrams}
@@ -880,7 +917,7 @@ I \mhb{sid 120} står detta kort nämnt, så man behöver inte memorera det utan
   \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \label{eqn:partfracA}\\%&\Longleftrightarrow \\
   (s+1)^2(s+2) \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= (s+1)^2(s+2) \left( \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \right) \label{eqn:partfracB}% &\Longleftrightarrow
 \end{align}
-\vspace{-6mm}
+\vspace{-7mm}
 \begin{align}
   %2s^2 + s -3 &= \frac{A_1}{s+1}(s+1)^2(s+2) + \frac{A_2}{(s+1)^2}(s+1)^2(s+2) + \frac{A_3}{s+2}(s+1)^2(s+2) &\Longleftrightarrow \\
   2s^2 + s -3 &= A_1(s+1)(s+2) + A_2(s+2) + A_3(s+1)^2 \label{eqn:partfracC}\\%&\Longleftrightarrow \\
@@ -896,7 +933,7 @@ Vi utgår från problemet i vänsterledet i (\ref{eqn:partfracA}), och partialbr
   s^0 &: 2A_1 + 2A_2 + A_3 = -3
 \end{align*}
 
-Uttryckt lite slarvigt, om vi betraktar (\ref{eqn:partfracE}) så ser vi att koefficienterna till $s^2$ är $A_1 + A_3$ i högerledet, och detta är lika med $2$ i vänsterledet. Koefficienterna till $s^1 = s$ är $3A_1 + A_2 + 2A_3$ i högerledet och $1$ i vänsterledet. Koefficenterna till $s^0 = 1$ är $2A_1 + 2A_2 + A_3$ i högerledet och $-3$ i vänsterledet. Vi har nu tre ekvationer och tre obekanta variabler som vi vill lösa ut. Detta kan man göra på lite olika sätt. Jag löser det med matriser, men tycker du att det verkar krångligt så använd för all del ditt sätt att lösa det.
+Uttryckt lite slarvigt, om vi betraktar (\ref{eqn:partfracE}) så ser vi att koefficienterna till $s^2$ är $A_1 + A_3$ i högerledet, och detta är lika med $2$ i vänsterledet. Koefficienterna till $s^1 = s$ är $3A_1 + A_2 + 2A_3$ i högerledet och $1$ i vänsterledet. Koefficenterna till $s^0 = 1$ är $2A_1 + 2A_2 + A_3$ i högerledet och $-3$ i vänsterledet. Vi har nu tre ekvationer och tre obekanta variabler som vi vill lösa ut. Detta kan man göra på lite olika sätt. Jag löser det med matriser, men tycker du att det verkar krångligt så använd för all del ditt sätt att lösa det. Ett kort exempel på matrisalgebra finns på \mhb{sid 92}.
 
 \begin{align*}
   \begin{amat}[r]{3}
