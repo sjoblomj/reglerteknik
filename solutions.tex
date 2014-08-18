@@ -8,7 +8,7 @@
 \usepackage{amssymb}
 \usepackage{fancyhdr}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows,positioning,calc}
+\usetikzlibrary{decorations.pathmorphing,shapes,arrows,positioning,calc}
 \usepackage[hidelinks]{hyperref}
 
 
@@ -82,6 +82,9 @@ pinstyle/.style = {pin edge={to-,thin,black}
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
 
 
+
+
+
 \begin{document}
 \thispagestyle{plain} % No header for first page
 
@@ -108,6 +111,37 @@ Note! These solutions are not from the department giving the course, and they ha
 }
 \horrule{0.5pt} % Thin top horizontal rule
 \normalsize % Revert to normal sized font
+\\[2.5cm]
+
+\resizebox{!}{120mm}
+{\includegraphics{p1110461.jpg}}
+
+\begin{tikzpicture}[overlay,remember picture]
+    \pgftransformshift{\pgfpointanchor{current page}{center}}
+    \node[
+        ellipse callout,
+        draw=red,
+        ultra thick,
+        fill=yellow,
+        callout relative pointer=(245:1cm),
+        font=\Huge,
+        text width=0.4\textwidth,
+        align=center,
+        anchor=center
+        ] at (2,2) {Jag har klarat regleren};
+\end{tikzpicture}
+
+%\section{Tenta 2012-12-21}
+%\subsection{1a}
+%Löst.
+%
+%
+%\subsection{1b}
+%Sida 42. har foto på't.
+%
+%
+%\subsection{1d}
+%Foto på halva.
 
 
 
@@ -128,8 +162,7 @@ Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$) och \mh
   G(s) = \frac{Y(s)}{U(s)} = \frac{e^{-s}}{s^2 + s}
 \end{align*}
 
-Detta är inte ett trevligt problem; tidsförskjutningen (alltså $u(t-1)$ i den givna ekvationen) ger upphov till $e^{-s}$, vilket gör det hela besvärligt att arbeta med. Vi struntar tillsvidare i tidsförskjutningen, och kompenserar för det i efterhand. Om vi alltså istället för att räkna på den givna ekvationen tittar på följande,
-\oklarhet{Under vilka omständigheter kan vi strunta i tidsförskjutningen?}
+Detta är inte ett trevligt problem; tidsförskjutningen (alltså $u(t-1)$ i den givna ekvationen) ger upphov till $e^{-s}$, vilket gör det hela besvärligt att arbeta med. Vi struntar tillsvidare i tidsförskjutningen, och kompenserar för det i efterhand. Detta kan vi göra om systemet är tidsinvariant, vilket alla system i Reglerteknikkursen är. Om vi alltså istället för att räkna på den givna ekvationen tittar på följande,
 \begin{align*}
   \ddot{y}(t) + \dot{y}(t) = u(t)
 \end{align*}
@@ -214,7 +247,7 @@ Detta har vi alltså löst då vi struntat i den tidsfördröjning som fanns med
 
 
 \subsection{1b}
-Teorin bakom detta står på \bl{sid 388}.\\\\
+Teorin bakom detta står på \bl{sid 424}.\\\\
 %
 I det allmänna fallet så gäller
 \begin{align*}
@@ -244,7 +277,7 @@ Polerna kan vi enligt ekvation 3.15 på \bl{sid 92} räkna ut med $\det(sI-A) = 
 Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $s_2=-1$. Detta innebär att vi vill placera den långsamma polen $s_2$ i den snabba polen $s_1$. Alltså sätter vi att $s_1 = s_2 = -3$. Har vi båda polerna i $-3$ så blir den karakteristiska ekvationen $\alpha_c(s) = (s+3)^2 = s^2 + 6s + 9$.\\\\
 %
 %
-Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), deder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, den karakteristiska ekvationen vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
+Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), leder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, den karakteristiska ekvationen vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
 %
 \begin{align*}
   \det(s I - A + BL) = \det\left(\begin{bmatrix}s & 0 \\ 0 & s \end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} + \begin{bmatrix}1 \\ 0\end{bmatrix} \begin{bmatrix}l_1 & l_2\end{bmatrix} \right) = \\
@@ -331,8 +364,7 @@ Vi ser att båda polerna har imaginära delar, men det spelar ingen roll. Det vi
   G_2(s) = \frac{s+3}{s^2+2s} = \frac{s+3}{s(s+2)}
 \end{align*}
 %
-Polerna får vi alltså av $s(s+2) = 0$. Vi ser omedelbart att $s_1 = -2$ och $s_2 = 0$. Polen $s_1$ ligger i vänster halvplan, men $s_2$ ligger på 0, och alltså inte strikt i vänster halvplan. $G_2(s)$ är alltså inte stabilt.\\
-\oklarhet{Facit pratar om att det ej är stabilt då det innehåller en integrator. Borde vi resonera om det istället?}
+Polerna får vi alltså av $s(s+2) = 0$. Vi ser omedelbart att $s_1 = -2$ och $s_2 = 0$. Polen $s_1$ ligger i vänster halvplan, men $s_2$ ligger på 0, och alltså inte strikt i vänster halvplan. $G_2(s)$ är alltså inte stabilt.
 
 
 \subsection{1b}
@@ -510,13 +542,12 @@ På blockschemaform:\\
 \end{tikzpicture}\\
 %
 %
-Fördelen med denna lösningsmetod är att vi mekaniskt arbetar med det givna blockschemat. Nackdelen är att vi har ett positivt återkopplat system (det vill säga, signalerna till alla summeringspunkterna i systemet adderas), vilket inte är att föredra om man ska realisera systemet, eftersom en störning då kommer förstärkas i systemet istället för att klinga ut. I vårt fall så gör dock boxen med $-1$ i den inre återkopplingen att signalen kommer vara negativ och därmed bete sig på samma sätt som ett negativt återkopplat system.\\
-\oklarhet{Stämmer antagandet om att det är kasst med positivt återkopplat system?}
+Fördelen med denna lösningsmetod är att vi mekaniskt arbetar med det givna blockschemat. Nackdelen är att vi har ett positivt återkopplat system (det vill säga, signalerna till alla summeringspunkterna i systemet adderas), vilket inte används lika mycket i Reglerteknikkursen. Detta är inte ett problem, utan det är mest att vi är lite mer ovana vid att ställa upp positivt återkopplade system.
 \\\\\\
 %
 %
 %
-\textbf{Alternativ 2:} Det lösningsförslag som presenteras i facit har fördelen att vi har ett negativt återkopplat system (det vill säga, signalerna till alla summeringspunkterna i systemet subtraheras). Vi kan flytta boxen $-1$ fram över delningspunkten, och få följande blockdiagram:\\
+\textbf{Alternativ 2:} Det lösningsförslag som presenteras i facit har fördelen att vi har ett negativt återkopplat system (det vill säga, signalerna till alla summeringspunkterna i systemet subtraheras), vilket vi ju räknar oftare på. Vi kan flytta boxen $-1$ fram över delningspunkten, och få följande blockdiagram:\\
 %
 %
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
@@ -792,7 +823,7 @@ Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$) och \mh
 \end{align*}
 %
 %
-Vi ersätter $s$ med $i\omega$ (det vill säga går över från Laplacedomänen till Fourierdomänen).
+Vi ersätter $s$ med $i\omega$ (det vill säga går över från s-domänen till Frekvensdomänen).
 %
 %
 \begin{align*}
@@ -839,7 +870,8 @@ Vi kan nu skriva upp det hela på önskad form:
   G(s) = \frac{e^{-s}}{s(s+1)}
 \end{align*}
 
-Känd formel:
+Från (6.30) på \bl{sid 249} ser vi att följande gäller:\\
+\oklarhet{Förtydliga vad vi gör här.}
 \begin{align*}
   \varphi_m - 180^\circ = \arg\{G(j\omega_c)\}
 \end{align*}
@@ -879,9 +911,48 @@ Vi ska alltså höja fasmarginalen med $42.3^\circ$. Att höja fasmarginalen inn
 
 
 
+%\section{Apa bepa}
+%\begin{tikzpicture}[
+%    scale=1.5,
+%    axis/.style={very thick, ->, >=stealth'},
+%    important line/.style={thick},
+%    dashed line/.style={dashed, thin},
+%    pile/.style={thick, ->, >=stealth', shorten <=2pt, shorten
+%    >=2pt},
+%    every node/.style={color=black}
+%    ]
+%    % Draw axes
+%    \draw[axis] (-3,0) -- (0.5,0) node (xaxis) [right] {$x$};
+%    \draw[axis] (0,-2) -- (0,2) node (yaxis) [above] {$y$};
+%%    \draw [<->,thick] (0,2) node (yaxis) [above] {$y$}
+%%        |- (3,0) node (xaxis) [right] {$x$};
+%    % Draw two intersecting lines
+%    \draw (0,0) coordinate (a_1) -- (2,1.8) coordinate (a_2);
+%    \draw (0,0) coordinate (a_1) -- (-2,1) coordinate (a_3);
+%    \draw (0,0) coordinate (a_1) -- (-2,-1) coordinate (a_4);
+%    \draw (0,1.5) coordinate (b_1) -- (2.5,0) coordinate (b_2);
+%    % Calculate the intersection of the lines a_1 -- a_2 and b_1 -- b_2
+%    % and store the coordinate in c.
+%    \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
+%    % Draw lines indicating intersection with y and x axis. Here we use
+%    % the perpendicular coordinate system
+%    \draw[dashed] (yaxis |- c) node[left] {$y'$}
+%        -| (xaxis -| c) node[below] {$x'$};
+%\end{tikzpicture}
+
+
 \section{Block diagrams}
 Introduktionsvideo på enkel nivå:\\
 \href{http://www.youtube.com/watch?v=Wj_vfeuksUM}{http://www.youtube.com/watch?v=Wj\_vfeuksUM}
+
+Exempel på blockdiagramsreduktion:\\
+\href{http://www.youtube.com/watch?v=rNlshpOoyxU}{http://www.youtube.com/watch?v=rNlshpOoyxU}
+
+Exempel på blockdiagramsreduktion:\\
+\href{http://www.youtube.com/watch?v=5_DpDB4CWEE}{http://www.youtube.com/watch?v=5\_DpDB4CWEE}
+
+Föreläsning om blockdiagram:\\
+\href{https://www.youtube.com/watch?v=X4hPVxZlrPU&list=PL5105727DD6E8DE98&index=6}{https://www.youtube.com/watch?v=X4hPVxZlrPU\\\&list=PL5105727DD6E8DE98\&index=6}
 
 
 \section{State Space}
