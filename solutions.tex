@@ -55,7 +55,7 @@
 
 
 \newcommand{\oklarhet}[1]{%
-  \noindent\fbox{\parbox[b][4em][t]{\textwidth}{\color{red}#1} }%
+  \noindent\fbox{\parbox[b][2em][t]{\textwidth}{\color{red}#1} }%
 }
 
 
@@ -83,33 +83,29 @@ pinstyle/.style = {pin edge={to-,thin,black}
 
 
 
-
+\setlength{\parindent}{0cm} % Remove paragraph indentation
 
 \begin{document}
 \thispagestyle{plain} % No header for first page
 
 
 \begin{center}
-\horrule{0.5pt} \\[0.3cm] % Thin top horizontal rule
+\horrule{2pt} \\[0.3cm] % Thick top horizontal rule
 %
 \huge  \coursecode -- \coursename \\[1mm]
 \Large \doctitle
 \normalsize % Revert to normal sized font
+\\[5mm]
 
-\horrule{2pt} \\[0.1cm] % Thick bottom horizontal rule
+\horrule{0.5pt}\\[5mm] % Thin middle horizontal rule
 
 \begin{tabular}{ l r }
   Av Johan Sjöblom & sjoblomj88@gmail.com
 \end{tabular}\\[0.1cm]
-\footnotesize Version: 1.0, Augusti 2014\\[0.4cm]
+\footnotesize \today\\[0.4cm]
 
 \end{center}
-{\footnotesize
-Please feel free to spread the document to anyone that wants it, and please improve the solutions if you can. All of the document, as well as the \LaTeX{} code, is public domain.
-
-Note! These solutions are not from the department giving the course, and they have not been checked for errors. The answers might not be explicit enough to give full points.\\
-}
-\horrule{0.5pt} % Thin top horizontal rule
+\horrule{2pt} % Thick bottom horizontal rule
 \normalsize % Revert to normal sized font
 \\[2.5cm]
 
@@ -123,26 +119,48 @@ Note! These solutions are not from the department giving the course, and they ha
         draw=red,
         ultra thick,
         fill=yellow,
-        callout relative pointer=(245:1cm),
+        callout relative pointer=(215:9mm),
         font=\Huge,
         text width=0.4\textwidth,
         align=center,
         anchor=center
-        ] at (2,2) {Jag har klarat regleren};
+        ] at (2,2) {Jag har klarat regleren, sucker!};
 \end{tikzpicture}
 
-%\section{Tenta 2012-12-21}
-%\subsection{1a}
-%Löst.
-%
-%
-%\subsection{1b}
-%Sida 42. har foto på't.
-%
-%
-%\subsection{1d}
-%Foto på halva.
 
+
+\section*{Inledning}
+Det här dokumentet är ett försök till att göra utförliga lösningar till kursen Reglerteknik D. Ett antal uppgifter från gamla tentor är lösta så utförligt som det varit möjligt. Målsättningen är att lösningarna antingen ska innehålla motiveringar om varför vi räknar som vi gör, alternativt referera till ett kapitel med förklaringar eller referenser till vart man hittar mer information.
+
+Då allt för många av de existerande lösningsförslagen hoppar över mellansteg och samband har det inneburit mycket svårtydda lösningar. Ambitionen med detta dokumentet är att skriva ut alla mellansteg, även de av ren algebraisk natur, så att det blir tydliga lösningar.
+
+Reglerkursen är i första hand svår då den innehåller en stor mängd spridda begrepp som man måste försöka hålla i huvudet och se sambanden mellan. För att slippa hålla ytterligare en massa formler i huvudet så refereras till de formler och sidor i Mathematics Handbook Beta (fifth edition) som är relevanta. Skrivsättet \mhb{sid 62} refererar alltså till sida 62 i Beta. Vid Laplacetransformeringar används skrivsättet \mhb{L47} för att beteckna i detta fall transform 47 ur Laplacetransformtabellen i Beta. Skrivsättet \bl{sid xx} används för att referera till en sida ur Bengt Lennartssons kursbok Reglerteknikens Grunder.
+
+Beteckningen för den imaginära enheten är slumpvis $i$ och $j$ i dokumentet.\\
+
+Ambitionen med dokumentet är att förklara uppgifter på ett för datateknologer tydligt sätt. Utan tvekan så kommer du ha en massa frågetecken även efter att ha läst uppgifterna, inte minst av karaktären ``vartifrån kommer den här uppställningen?'' eller ``varför ansätter vi problemet på det här viset?''. Hjälp jättegärna till med att förbättra dokumentet! Oavsett vad du kan bidra med så uppmuntras du att förbättra och utöka!\\
+
+Lycka till så ses vi på omtentan!
+\\[3mm]
+\horrule{0.5pt} \\[3mm] % Thin horizontal rule
+
+Det är fritt fram att sprida dokumentet till alla som kan tänkas vilja ha det. Förbättra gärna lösningarna om du kan! Hela dokumentet, såväl som \LaTeX{}-koden är att betrakta som Public Domain.
+
+Observera att lösningarna inte kommer från instutitionen som ger kursen och att de inte blivit felkontrollerade. Svaren kan vara både fel, ha konstig notation och det är inte säkert att de är utförliga nog. Ser du något som du tycker verkar fel eller som du tror är konstigt, så har du förmodligen rätt.
+\\[3mm]
+\horrule{2pt} % Thick horizontal rule
+
+
+\subsection*{Ändringslogg}
+\begin{tabular}{l l p{7cm}}
+  2014-08-21 & Johan Sjöblom & Första versionen.
+\end{tabular}
+
+
+
+\newpage
+\tableofcontents
+\newpage
 
 
 \section{Tenta 2014-04-24}
@@ -151,7 +169,7 @@ Note! These solutions are not from the department giving the course, and they ha
   \ddot{y}(t) + \dot{y}(t) = u(t - 1)
 \end{align*}
 Notera att uppgiften säger att $u$ är insignal, och alltså inte ett steg!
-%
+
 Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$) och \mhb{L4} ($u(t - 1)$):
 \begin{align*}
   s^2Y(s) + sY(s) = e^{-1 \cdot s}U(s) \\
@@ -171,35 +189,35 @@ så får vi på samma sätt som ovan:
   s^2Y(s) + sY(s) = U(s) \\
   Y(s)(s^2 + s) = U(s)
 \end{align*}
-%
+
 Överföringsfunktionen, (nu kallad $G_{\text{ny}}(s)$, då det ju inte är samma som vi tidigare hade) blir:
 \begin{align*}
   G_{\text{ny}}(s) = \frac{Y(s)}{U(s)} = \frac{1}{s^2 + s}
 \end{align*}
-%
+
 Vi vill bestämma systemets stegsvar, det vill säga $y(t)$ då insignalen är ett steg. Det får vi genom att invers-Laplacea $Y(s)$. Ett steg i Laplacedomänen innebär att insignalen $U(s) = \frac{1}{s}$. Vi har $G_{\text{ny}}(s)$ och $U(s)$, och vill ha ut $Y(s)$. Detta ger:
 \begin{align*}
   G_{\text{ny}}(s) = \frac{Y(s)}{U(s)} \Longleftrightarrow Y(s) = G_{\text{ny}}(s)U(s) = \frac{1}{s^2 + s} \cdot \frac{1}{s} = \frac{1}{s^2(s + 1)}
 \end{align*}
-%
+
 För att lösa detta använder vi oss av partialbråksuppdelning (se sektion \ref{sec:partialbråksuppdelning}).
-%
+
 \begin{align*}
   Y(s) &= \frac{1}{s^2(s + 1)} = \frac{A}{s^2} + \frac{B}{s} + \frac{C}{s+1} \Longleftrightarrow \\
   1 &= A(s + 1) + Bs(s + 1) + Cs^2 \Longleftrightarrow \\
   1 &= As + A + Bs^2 + Bs + Cs^2
 \end{align*}
-%
+
 Vi skiljer på gradtalen:
-%
+
 \begin{align*}
   s^2: & \quad B + C = 0\\
   s^1: & \quad A + B = 0\\
   s^0: & \quad A     = 1
 \end{align*}
-%
+
 Detta kan lösas på flera sätt, till exempel genom att sätta upp på matrisform:
-%
+
 \begin{equation*}
     \begin{amat}[r]{3}
       1  &0  &0  &1  \\
@@ -227,18 +245,18 @@ Vi får alltså:
     C = 1
   \end{cases}
 \end{align*}
-%
+
 Stoppar vi in värdena i $Y(s)$ så får vi:
 \begin{align*}
   Y(s) = G_{\text{ny}}(s)U(s) = \frac{1}{s^2(s + 1)} = \frac{A}{s^2} + \frac{B}{s} + \frac{C}{s+1} = \frac{1}{s^2} - \frac{1}{s} + \frac{1}{s+1}
 \end{align*}
-%
+
 Detta kan vi enkelt invers-Laplacea med hjälp av \mhb{L20} ($\frac{1}{s^2}$), \mhb{L18} ($\frac{1}{s}$) och \mhb{L21} ($\frac{1}{s+1}$).
-%
+
 \begin{align*}
   y(t) = t^1 - 1 + e^{-1\cdot t} = t - 1 + e^{-t}, \qquad t \geq 0 \quad (y(t) = 0, t < 0)
 \end{align*}
-%
+
 Detta har vi alltså löst då vi struntat i den tidsfördröjning som fanns med i ursprungsproblemet (det vill säga vi har förbisett att differentialekvationen innehöll termen $u(t-1)$ och istället räknat på $u(t)$). Då fördröjningen är 1 tidsenhet, så ersätter vi $t$ i resultatet med $t-1$:
 \begin{align*}
   y(t) = (t - 1) - 1 + e^{-(t - 1)} = t - 2 + e^{-t + 1}, \qquad t \geq 1 \quad (y(t) = 0, t < 1)
@@ -248,9 +266,9 @@ Detta har vi alltså löst då vi struntat i den tidsfördröjning som fanns med
 
 \subsection{1b}
 Teorin bakom detta står på \bl{sid 424}.\\\\
-%
+
 Vi ska bestämma en tillståndsåterkoppling. Med andra ord så har vi ett öppet system, och ska återkoppla det.\\
-%
+
 I det allmänna fallet så gäller
 \begin{align*}
   \dot{x}(t) =~& Ax(t) + Bu(t) \\
@@ -261,40 +279,39 @@ och i vårt fall så har vi
   \dot{x}(t) =& \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} x(t) + \begin{bmatrix}1 \\ 0\end{bmatrix} u(t) \\
   y(t) =& \begin{bmatrix}1 & 1\end{bmatrix} x(t)
 \end{align*}
-%
-%
+
+
 Då vi har ett öppet system så kan vi enligt ekvation 3.15 på \bl{sid 92} räkna ut polerna med $\det(sI-A) = 0$ (om det var ett slutet system så hade (11.15) på \bl{sid 425} gällt). Hur man räknar ut determinanter står på \mhb{sid 93}.
-%
+
 \begin{align*}
   \det(sI-A) = 0 \Longleftrightarrow \\
   0 = \det \left( \begin{bmatrix}s & 0 \\ 0 & s\end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} \right) = \det \left( \begin{bmatrix}s+4 & 3 \\ -1 & s\end{bmatrix} \right) =\\
   (s+4)s - 3(-1) = s^2 + 4s + 3 = 0\\
   s=-\frac{4}{2} \pm \sqrt{\left(\frac{4}{2}\right)^2 - 3}\\
   s=-2 \pm 1\\
-  s_1=-3, \qquad s_2=-1\\
+  s_1=-3, \qquad s_2=-1
 \end{align*}
-%
-%
+
+
 \oklarhet{Referens till polavstånd vs. hastighet på systemet?}\\
-Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $s_2=-1$. Detta innebär att vi vill placera den långsamma polen $s_2$ i den snabba polen $s_1$. Alltså sätter vi att $s_1 = s_2 = -3$. Har vi båda polerna i $-3$ så blir den karakteristiska ekvationen $\alpha_c(s) = (s+3)^2 = s^2 + 6s + 9$.\\\\
-%
-%
+Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $s_2=-1$. Detta innebär att vi vill placera den långsamma polen $s_2$ i den snabba polen $s_1$. Alltså sätter vi att $s_1 = s_2 = -3$. Har vi båda polerna i $-3$ så blir den karakteristiska ekvationen $\alpha_c(s) = (s+3)^2 = s^2 + 6s + 9$.\\
+
 Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), leder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, den karakteristiska ekvationen vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
-%
+
 \begin{align*}
   \det(s I - A + BL) = \det\left(\begin{bmatrix}s & 0 \\ 0 & s \end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} + \begin{bmatrix}1 \\ 0\end{bmatrix} \begin{bmatrix}l_1 & l_2\end{bmatrix} \right) = \\
   \det \left(\begin{bmatrix}s+4 & 3 \\ -1 & s \end{bmatrix} + \begin{bmatrix}l_1 & l_2 \\ 0 & 0\end{bmatrix} \right) = \det \left(\begin{bmatrix}s+4+l_1 & 3+l_2 \\ -1 & s\end{bmatrix} \right) = \\
   (s+4+l_1)s - (3+l_2)(-1) = \\
   s^2 +4s + l_1s + 3 + l_2 = s^2 + (4+l_1)s + (3 + l_2)
 \end{align*}
-%
+
 Detta är alltså enligt (11.15) lika med den karakteristiska ekvationen ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
-%
+
 \begin{eqnarray*}
   s^2 + &(4+l_1)s &+ (3 + l_2) = \\
   s^2 + &6s &+ 9\\
 \end{eqnarray*}
-\vspace{-14mm}
+\vspace{-10mm}
 \begin{align*}
   \left\{ \begin{array}{ll}
   4+l_1 = 6\\
@@ -308,29 +325,32 @@ Detta är alltså enligt (11.15) lika med den karakteristiska ekvationen ($\alph
 
 
 \subsection{1d}
+\emph{Obs! Detta är en skissartad lösning, med en del oklarheter i sig. Den är troligast skriven med delvis inkorrekt matematisk notation, vilket lärare har en tendens att se rött av.}\\\\
+
+
 Från bifogat formelblad till tesen:\\
-%
+
 LP $\rightarrow$ HP: $\qquad s \rightarrow \frac{\omega_c}{s}$.\\\\
-%
-%
+
+
 På något sätt så ser vi att när vi utgår från första ordningens Butterworth-filter, så har vi\\
 \oklarhet{Hur ser vi detta?}
-%
+
 \begin{align*}
   |H(i\omega)|^2 = \frac{1}{1 + (\frac{\omega}{\omega_c})^{2n}}
 \end{align*}
-%
+
 Nu har vi\\
 \oklarhet{Hur?}
 \begin{align*}
   H(s) = \frac{1}{1 + \underbrace{s}_{s \rightarrow \frac{\omega_c}{s}}} \rightarrow \frac{1}{1 + \frac{\omega_c}{s}} = \frac{s}{\omega_c + s}
 \end{align*}
-%
+
 Från bifogat formelblad till tesen så har vi att Tustin-diskretisering innebär:
 \begin{align*}
   s \rightarrow \frac{2}{h} \frac{1 - z^{-1}}{1 + z ^{-1}} = \frac{2}{h} \frac{1 - \frac{1}{z}}{1 + \frac{1}{z}} = \frac{2}{h} \frac{z - 1}{z + 1}
 \end{align*}
-%
+
 Om vi Tustin-diskretiserar $H(s)$ så får vi:
 \begin{align*}
   H(z) = \frac{\frac{2}{h} \frac{z - 1}{z + 1}}{\omega_c + \frac{2}{h} \frac{z - 1}{z + 1}} = \frac{2(z - 1)}{\omega_c h (z+1) + 2(z-1)} = \frac{z-1}{z-1 + \frac{1}{2} \omega_c h (z+1)}
@@ -338,7 +358,7 @@ Om vi Tustin-diskretiserar $H(s)$ så får vi:
 
 På något sätt så ser vi att $\omega_c = 2\pi \cdot 500$ Hz. Vi ljuger oss också till att $h$ är angivet i sekunder, och att $h = 10^4 \text{ Hz} \Rightarrow (10^4)^{-1}$. Sätter vi in det så får vi:\\
 \oklarhet{Hur gick det till?}
-%
+
 \begin{align*}
   H(z) = \frac{z-1}{z-1 + \frac{1}{2} 2\pi 500 \cdot (10^4)^{-1} (z+1)} = \frac{z-1}{z-1 + 0.05 \pi (z+1)} = \\
   \frac{z-1}{(0.05\pi + 1)z + 0.05 \pi -1} = \frac{\frac{1}{(0.05\pi + 1)}(z-1)}{z + \frac{0.05 \pi -1}{(0.05\pi + 1)}} \approx \frac{0.86(z-1)}{z-0.73}\\
@@ -351,7 +371,7 @@ Ett insignal-utsignal-stabilt system har sina poler strikt i vänster halvplan. 
 \begin{align*}
   G_1(s) = \frac{s-3}{s^2+2s+6}
 \end{align*}
-%
+
 Sätt nämnaren till 0 och lös:
 \begin{align*}
   s^2+2s+6 = 0\\
@@ -359,19 +379,19 @@ Sätt nämnaren till 0 och lös:
   s = -1 \pm \sqrt{-5}\\
   s_1 = -1 + 5i, \qquad s_2 = -1 - 5i
 \end{align*}
-%
+
 Vi ser att båda polerna har imaginära delar, men det spelar ingen roll. Det viktiga är att båda ligger i vänster halvplan, vilket de ju gör. $G_1(s)$ är alltså stabilt.
 
 \begin{align*}
   G_2(s) = \frac{s+3}{s^2+2s} = \frac{s+3}{s(s+2)}
 \end{align*}
-%
+
 Polerna får vi alltså av $s(s+2) = 0$. Vi ser omedelbart att $s_1 = -2$ och $s_2 = 0$. Polen $s_1$ ligger i vänster halvplan, men $s_2$ ligger på 0, och alltså inte strikt i vänster halvplan. $G_2(s)$ är alltså inte stabilt.
 
 
 \subsection{1b}
 Vi ska bestämma överföringsfunktionen från $\theta_i$ till $\theta_0$. Gyroåterkopplingen subtraherar $\theta_0Ks$ från insignalen, men givet i uppgiften är att $K=0$, vilket alltså gör att gyroåterkopplingen faller bort. Blockdiagrammet reduceras till följande:\\
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (block07)   {$0.7$};
@@ -402,12 +422,11 @@ Vi ska bestämma överföringsfunktionen från $\theta_i$ till $\theta_0$. Gyro�
 
   \draw [color=lightgray,thick,dashed](3,-1.2) rectangle (8.8,-4.8);
 \end{tikzpicture}\\
-%
-%
+
+
 För att gå vidare behöver vi reducera blockdiagrammet ytterligare. Vi börjar fokusera på den inre återkopplingen (markerad i figuren ovan). Vi kan behandla boxen med $-1$ på två olika sätt.\\
 \textbf{Alternativ ett:} Multiplicera in den i boxen med $\frac{1}{1+2s}$ varpå vi får följande:\\
-%
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (block07)   {$0.7$};
@@ -434,9 +453,9 @@ För att gå vidare behöver vi reducera blockdiagrammet ytterligare. Vi börjar
   \draw [->] (block04) -- (sumb);
   \draw [->] (y) -- (tmp4) -- (block04);
 \end{tikzpicture}\\
-%
+
 Standardformen för att rita en enkel positiv återkoppling är:\\
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [sum, right of=rinput]                          (sum)       {};
@@ -453,17 +472,17 @@ Standardformen för att rita en enkel positiv återkoppling är:\\
   \draw [->] (tmp3) -- (tmp2) -- (blockb);
   \draw [->] (blockb) -- (tmp1) -- node[pos=0.85] {$+$} node[pos=1.25] {$+$} (sum);
 \end{tikzpicture}\\
-%
-%
+
+
 Överföringsfunktionen för ett sådant system är som bekant
 \begin{align*}
   \frac{y}{r} = \frac{F(s)}{1 - F(s)G(s)}
 \end{align*}
-%
-%
+
+
 Om vi tittar på den inre återkopplingen, som vi nyss markerade, och ritar om den på standardformen får vi:\\
-%
-%
+
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (block0)    {$0.4$};
@@ -481,23 +500,22 @@ Om vi tittar på den inre återkopplingen, som vi nyss markerade, och ritar om d
   \draw [->] (tmp3) -- (tmp2) -- (blockb);
   \draw [->] (blockb) -- (tmp1) -- node[pos=0.85] {$+$} node[pos=1.25] {$+$} (sum);
 \end{tikzpicture}\\
-%
-%
+
+
 Sätter vi upp överföringsfunktionen för delsystemet så får vi
 \begin{align*}
   \frac{o}{i} = 0.4 \frac{-\frac{1}{1+2s}}{1-(-\frac{1}{1+2s})0.5}
 \end{align*}
-%
+
 Vi kan förenkla systemet genom att börja med att förlänga med $1+2s$:
 \begin{align*}
   \frac{o}{i} = -0.4 \frac{\frac{1}{1+2s}}{1+\frac{1}{1+2s}0.5} = -0.4 \frac{1+2s}{1+2s} \cdot \frac{\frac{1}{1+2s}}{1+\frac{1}{1+2s}0.5} =\\
   -0.4 \frac{\frac{1}{1+2s}(1+2s)}{(1+2s) + \frac{1}{1+2s}0.5(1+2s)} = -0.4 \frac{1}{(1+2s) + 0.5} = -\frac{0.4}{2s + 1.5}
 \end{align*}
-%
-%
+
+
 Vi kan nu ersätta den inre återkopplingen med en låda med den inre återkopp\-lingens överföringsfunktion:\\
-%
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (blocka)    {$0.7$};
@@ -515,25 +533,25 @@ Vi kan nu ersätta den inre återkopplingen med en låda med den inre återkopp\
   \draw [->] (tmp3) -- (tmp2) -- (blockc);
   \draw [->] (blockc) -- (tmp1) -- node[pos=0.85] {$+$} node[pos=1.25] {$+$} (sum);
 \end{tikzpicture}\\
-%
-%
+
+
 På precis samma sätt som ovan kan vi nu förenkla systemet genom att sätta upp dess överföringsfunktion.
 \begin{align*}
   \frac{\theta_0}{\theta_i} = 0.7 \frac{\frac{1}{s^2 + 0.3s + 1}}{1-\frac{1}{s^2 + 0.3s + 1} (-\frac{0.4}{2s+1.5})}
 \end{align*}
-%
+
 Vi förlänger med $(s^2 + 0.3s + 1)(2s+1.5)$:
-%
+
 \begin{align*}
   \frac{\theta_0}{\theta_i} = 0.7 \frac{(s^2 + 0.3s + 1)(2s+1.5)}{(s^2 + 0.3s + 1)(2s+1.5)} \cdot \frac{\frac{1}{s^2 + 0.3s + 1}}{1+\frac{1}{s^2 + 0.3s + 1}\cdot \frac{0.4}{2s+1.5}} = \\
   0.7 \frac{\frac{1}{s^2 + 0.3s + 1} (s^2 + 0.3s + 1)(2s+1.5)}{(s^2 + 0.3s + 1)(2s+1.5) + \frac{1}{s^2 + 0.3s + 1}\cdot \frac{0.4}{2s+1.5} (s^2 + 0.3s + 1)(2s+1.5)} = \\
   0.7 \frac{2s+1.5}{(s^2 + 0.3s + 1)(2s+1.5) + 0.4} = 0.7 \frac{2(s+0.75)}{2((s^2 + 0.3s + 1)(s+0.75) + 0.2)} = \\
   \frac{0.7(s+0.75)}{s^3 + 1.05s^2 + 1.225s + 0.95}
 \end{align*}
-%
-%
+
+
 På blockschemaform:\\
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput, node distance=3cm]     (blocka)    {$\frac{0.7(s+0.75)}{s^3 + 1.05s^2 + 1.225s + 0.95}$};
@@ -542,16 +560,14 @@ På blockschemaform:\\
   \draw [->] (rinput) -- node{$\theta_i$} (blocka);
   \draw [->] (blocka) -- node [name=y] {$\theta_0$}(output);
 \end{tikzpicture}\\
-%
-%
+
+
 Fördelen med denna lösningsmetod är att vi mekaniskt arbetar med det givna blockschemat. Nackdelen är att vi har ett positivt återkopplat system (det vill säga, signalerna till alla summeringspunkterna i systemet adderas), vilket inte används lika mycket i Reglerteknikkursen. Detta är inte ett problem, utan det är mest att vi är lite mer ovana vid att ställa upp positivt återkopplade system.
 \\\\\\
-%
-%
-%
+
+
 \textbf{Alternativ 2:} Det lösningsförslag som presenteras i facit har fördelen att vi har ett negativt återkopplat system (det vill säga, signalerna till alla summeringspunkterna i systemet subtraheras), vilket vi ju räknar oftare på. Vi kan flytta boxen $-1$ fram över delningspunkten, och få följande blockdiagram:\\
-%
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (block07)   {$0.7$};
@@ -581,11 +597,10 @@ Fördelen med denna lösningsmetod är att vi mekaniskt arbetar med det givna bl
   \draw [->] (block04) -- (sumb);
   \draw [->] (y) -- (tmp4) -- (block04);
 \end{tikzpicture}\\
-%
-%
+
+
 I den övre summeringspunkten så adderar vi en negerad signal, vilket är samma sak som att subtrahera signalen. Vi kan alltså ersätta additionstecknet med ett subtraktionstecken, och ta bort boxen med $-1$. På samma sätt gör vi i den inre återkopplingen; den återkopplande signalen kommer vara negerad, och vi kan därför ersätta additionstecknet i den undre summeringspunkten med ett subtraktionstecken:\\
-%
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (block07)   {$0.7$};
@@ -612,9 +627,10 @@ I den övre summeringspunkten så adderar vi en negerad signal, vilket är samma
   \draw [->] (block04) -- (sumb);
   \draw [->] (y) -- (tmp4) -- (block04);
 \end{tikzpicture}\\
-%
+
+
 Standardformen för att rita en enkel negativ återkoppling är:\\
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [sum, right of=rinput]                          (sum)       {};
@@ -631,17 +647,16 @@ Standardformen för att rita en enkel negativ återkoppling är:\\
   \draw [->] (tmp3) -- (tmp2) -- (blockb);
   \draw [->] (blockb) -- (tmp1) -- node[pos=0.85] {$-$} node[pos=1.25] {$+$} (sum);
 \end{tikzpicture}\\
-%
-%
+
+
 Överföringsfunktionen för ett sådant system är som bekant
 \begin{align*}
   \frac{y}{r} = \frac{F(s)}{1 + F(s)G(s)}
 \end{align*}
-%
-%
+
+
 Om vi tittar på den inre återkopplingen, och ritar om den på standardformen får vi:\\
-%
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (block0)    {$0.4$};
@@ -659,23 +674,22 @@ Om vi tittar på den inre återkopplingen, och ritar om den på standardformen f
   \draw [->] (tmp3) -- (tmp2) -- (blockb);
   \draw [->] (blockb) -- (tmp1) -- node[pos=0.85] {$-$} node[pos=1.25] {$+$} (sum);
 \end{tikzpicture}\\
-%
-%
+
+
 Sätter vi upp överföringsfunktionen för delsystemet så får vi
 \begin{align*}
   \frac{o}{i} = 0.4 \frac{\frac{1}{1+2s}}{1+\frac{1}{1+2s}0.5}
 \end{align*}
-%
+
 Vi kan förenkla systemet genom att börja med att förlänga med $1+2s$:
 \begin{align*}
   \frac{o}{i} = 0.4 \frac{\frac{1}{1+2s}}{1+\frac{1}{1+2s}0.5} = 0.4 \frac{1+2s}{1+2s} \cdot \frac{\frac{1}{1+2s}}{1+\frac{1}{1+2s}0.5} =\\
   0.4 \frac{\frac{1}{1+2s}(1+2s)}{(1+2s) + \frac{1}{1+2s}0.5(1+2s)} = 0.4 \frac{1}{(1+2s) + 0.5} = \frac{0.4}{2s + 1.5}
 \end{align*}
-%
-%
+
+
 Vi kan nu ersätta den inre återkopplingen med en låda med den inre återkopp\-lingens överföringsfunktion:\\
-%
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput]                        (blocka)    {$0.7$};
@@ -693,26 +707,26 @@ Vi kan nu ersätta den inre återkopplingen med en låda med den inre återkopp\
   \draw [->] (tmp3) -- (tmp2) -- (blockc);
   \draw [->] (blockc) -- (tmp1) -- node[pos=0.85] {$-$} node[pos=1.25] {$+$} (sum);
 \end{tikzpicture}\\
-%
-%
+
+
 På precis samma sätt som ovan kan vi nu förenkla systemet genom att sätta upp dess överföringsfunktion.
 \begin{align*}
   \frac{\theta_0}{\theta_i} = 0.7 \frac{\frac{1}{s^2 + 0.3s + 1}}{1+\frac{1}{s^2 + 0.3s + 1}\cdot \frac{0.4}{2s+1.5}}
 \end{align*}
-%
-%
+
+
 Vi förlänger med $(s^2 + 0.3s + 1)(2s+1.5)$:
-%
+
 \begin{align*}
   \frac{\theta_0}{\theta_i} = 0.7 \frac{(s^2 + 0.3s + 1)(2s+1.5)}{(s^2 + 0.3s + 1)(2s+1.5)} \cdot \frac{\frac{1}{s^2 + 0.3s + 1}}{1+\frac{1}{s^2 + 0.3s + 1}\cdot \frac{0.4}{2s+1.5}} = \\
   0.7 \frac{\frac{1}{s^2 + 0.3s + 1} (s^2 + 0.3s + 1)(2s+1.5)}{(s^2 + 0.3s + 1)(2s+1.5) + \frac{1}{s^2 + 0.3s + 1}\cdot \frac{0.4}{2s+1.5} (s^2 + 0.3s + 1)(2s+1.5)} = \\
   0.7 \frac{2s+1.5}{(s^2 + 0.3s + 1)(2s+1.5) + 0.4} = 0.7 \frac{2(s+0.75)}{2((s^2 + 0.3s + 1)(s+0.75) + 0.2)} = \\
   \frac{0.7(s+0.75)}{s^3 + 1.05s^2 + 1.225s + 0.95}
 \end{align*}
-%
-%
+
+
 På blockschemaform:\\
-%
+
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]                            (rinput)    {};
   \node [block, right of=rinput, node distance=3cm]     (blocka)    {$\frac{0.7(s+0.75)}{s^3 + 1.05s^2 + 1.225s + 0.95}$};
@@ -721,8 +735,8 @@ På blockschemaform:\\
   \draw [->] (rinput) -- node{$\theta_i$} (blocka);
   \draw [->] (blocka) -- node [name=y] {$\theta_0$}(output);
 \end{tikzpicture}\\
-%
-%
+
+
 Samma svar erhålls alltså oavsett angreppssätt.
 
 
@@ -734,14 +748,14 @@ Som framgår av differentialekvationen och texten så har vi två funktioner som
 \begin{align*}
   J \frac{dN_0}{dt} + K_G{N_0}^2 = \frac{K_T}{R}(u_0 - K_EN_0)
 \end{align*}
-%
+
 Den första termen, $\frac{dN_0}{dt}$, deriverar en konstant med avseende på tiden. En derivata av en konstant är noll, varpå den termen faller bort. Vi får:
 
 \begin{align*}
   0 + K_G{N_0}^2 &= \frac{K_T}{R}u_0 - \frac{K_T}{R}K_EN_0\\
   u_0 &= \frac{K_G{N_0}^2R}{K_T} + K_EN_0
 \end{align*}
-%
+
 
 
 \subsection{3b}
@@ -814,7 +828,7 @@ Varvtalet, $N_0$, står i nämnaren, det vill säga $T$ minskar med ökat varvta
 
 \subsection{4a}
 Teorin bakom detta står på \bl{sid 424}.\\\\
-%
+
 I det allmänna fallet så gäller
 \begin{align*}
   \dot{x}(t) =~& Ax(t) + Bu(t) \\
@@ -826,8 +840,8 @@ och i vårt fall så har vi
   y(t) =& \begin{bmatrix}1 & 0\end{bmatrix} x(t)\\\\
   u(t) =& -Lx(t) + K_r r(t)
 \end{align*}
-%
-%
+
+
 Då det skall finnas relativ dämpning och naturlig egenfrekvens så ska vi använda följande ekvation från det till tesen bifogade formelbladet.
 
 \begin{align*}
@@ -859,7 +873,7 @@ Hur man räknar ut determinanter står på \mhb{sid 93}.
 \end{align*}
 
 Detta är alltså lika med det karakteristiska polynomet ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
-%
+
 \begin{eqnarray*}
   s^2 + &(-l_1 + l_2)s &+ l_1 = \\
   s^2 + &2s &+ 2\\
@@ -885,19 +899,20 @@ Enligt (11.16) på \bl{sid 426} så gäller:
   G_{ry}(s) = C(sI - A + BL)^{-1}BK_r
 \end{align*}
 
-Vi ska alltså lösa ut $K_r$, och för att göra det behöver vi utföra lite matrismultiplikation och räkna ut inversen av $sI - A + BL$. Hur man räknar ut matrisinverser står på \mhb{sid 94}.
+Vi ska alltså lösa ut $K_r$, och för att göra det behöver vi utföra lite matrismultiplikation och räkna ut inversen av $sI - A + BL$ (som vi ju räknade ut i a)-uppgiften). Hur man räknar ut matrisinverser står på \mhb{sid 94}.
 
 \begin{align*}
-  G_{ry}(s) = C(sI - A + BL)^{-1}BK_r = \begin{bmatrix}1 & 0\end{bmatrix} \left(\begin{bmatrix}s - l_1 & -1 -l_2 \\ l_1 & s + l_2\end{bmatrix} \right)^{-1} \begin{bmatrix}-1 \\ 1\end{bmatrix} K_r = \\
+  G_{ry}(s) = C(sI - A + BL)^{-1}BK_r = \\
+  \begin{bmatrix}1 & 0\end{bmatrix} \left(\begin{bmatrix}s - l_1 & -1 -l_2 \\ l_1 & s + l_2\end{bmatrix} \right)^{-1} \begin{bmatrix}-1 \\ 1\end{bmatrix} K_r = \\
   \begin{bmatrix}1 & 0\end{bmatrix} \left(\frac{1}{(s-l_1)(s+l_2) - l_1(-1-l_2)}\begin{bmatrix}s + l_2 & 1 +l_2 \\ -l_1 & s - l_1\end{bmatrix} \right) \begin{bmatrix}-1 \\ 1\end{bmatrix} K_r = \\
   \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}s + l_2 & 1 +l_2 \\ -l_1 & s - l_1\end{bmatrix} \begin{bmatrix}-1 \\ 1\end{bmatrix} \frac{K_r}{(s-l_1)(s+l_2) - l_1(-1-l_2)} = \\
-  \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}-(s + l_2) + (1 +l_2) \\ l_1 + (s - l_1)\end{bmatrix} \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
+  \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}-1(s + l_2) + 1\cdot(1 +l_2) \\ (-1)(-l_1) + 1\cdot(s - l_1)\end{bmatrix} \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
   \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}1 - s \\ s\end{bmatrix} \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
   (1 - s) \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
   \frac{K_r(1 - s)}{s^2 + (-l_1 + l_2)s + l_1}
 \end{align*}
 
-Sätter vi in värdena på $l_1$ och $l_2$ från a)-uppgiften så får vi:
+Sätter vi in $l_1 = 2$ och $l_2 = 4$ från a)-uppgiften så får vi:
 
 \begin{align*}
   G_{ry}(s) = \frac{K_r(1 - s)}{s^2 + (-l_1 + l_2)s + l_1} = \frac{K_r(1 - s)}{s^2 + (-2 + 4)s + 2} = \frac{K_r(1 - s)}{s^2 + 2s + 2}
@@ -913,7 +928,7 @@ Villkoret i stationaritet uppfylls genom att sätta $G_{ry}(0) = 1$:
 \section{Tenta 2013-08-22}
 \subsection{1a}
 Notera att uppgiften säger att $u$ är insignal, det är alltså inte ett steg som står inskrivet i differentialekvationen. Insignalen är en sinussignal, vilket innebär att vi väljer att ansätta problemet enligt nedan.
-%
+
 Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$), \mhb{L6} ($y(t)$) och \mhb{L4} ($u(t - 2)$):
 \begin{align*}
   \ddot y(t) + 3 \dot y(t) + 2y(t) &= 3u(t-2)\\
@@ -921,16 +936,16 @@ Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$), \mhb{L
   Y(s)(s^2 + 3s + 2) &= 3e^{-2s}U(s)\\
   G(s) = \frac{Y(s)}{U(s)} = \frac{3e^{-2s}}{s^2 + 3s + 2} &= \frac{3e^{-2s}}{(s + 1)(s + 2)}
 \end{align*}
-%
-%
+
+
 Vi ersätter $s$ med $i\omega$ (det vill säga går över från s-domänen till Frekvensdomänen).
-%
-%
+
+
 \begin{align*}
   G(i\omega) = \frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)}
 \end{align*}
-%
-%
+
+
 På \mhb{sid 339} regel 7 under `Continuous Systems' ser vi att med en insignal som är $\sin(\omega t)$, så blir utsignalen $|G(i\omega)| \sin(\omega t + \arg\{ G(i\omega) \})$.
 
 Vi börjar med att räkna ut $|G(i\omega)|$, och hur vi gör det står beskrivet på \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$.
@@ -940,7 +955,7 @@ Vi börjar med att räkna ut $|G(i\omega)|$, och hur vi gör det står beskrivet
   \frac{3}{\sqrt{\omega^2 + 1^2}\sqrt{\omega^2 + 2^2}}
 \end{align*}
 
-Vi räknar nu ut $\arg\{ G(i\omega) \}$, och hur vi gör det står beskrivet på \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$. På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$. Vi ser också på \mhb{sid 62} att $\arg \{e^{i\theta}\} = \theta$.
+Vi räknar nu ut $\arg\{ G(i\omega) \}$, och hur vi gör det står beskrivet på \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$. På \mhb{sid 62} finns det några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$. Vi ser också på \mhb{sid 62} att $\arg \{e^{i\theta}\} = \theta$.
 
 \begin{align*}
   \arg\{ G(i\omega) \} = \arg \left\{ \frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)} \right\} = \\
@@ -964,7 +979,7 @@ Vi kan nu skriva upp det hela på önskad form:
 \section{Tenta 2013-04-05}
 \subsection{5a}
 
-Vår uppgift är att vi blivit givna $G(s)$ (vars egenskaper vi inte kan påverka), och vi ska dimensionera en regulator $F(s)$ som ändrar systemets egenskaper så att de uppfyller uppgiftens krav.
+Vår uppgift är att vi blivit givna $G(s)$ (vars egenskaper vi inte kan påverka), och vi ska dimensionera en regulator $F(s)$ som ändrar systemets egenskaper så att de uppfyller uppgiftens krav.\\
 
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
   \node [input, name=rinput]        (rinput)    {};
@@ -981,7 +996,7 @@ Vår uppgift är att vi blivit givna $G(s)$ (vars egenskaper vi inte kan påverk
   \draw [->] (blocka) -- (blockb);
   \draw [->] (blockb) -- node [name=y] {$y$}(output);
   \draw [->] (tmp2) -- (tmp3) -- (tmp1) -- node[pos=0.85] {$-$} node[pos=1.25] {$+$} (sum);
-\end{tikzpicture}\\
+\end{tikzpicture}
 
 \begin{align*}
   G(s) = \frac{e^{-s}}{s(s+1)}
@@ -993,7 +1008,7 @@ Från (6.30) på \bl{sid 249} ser vi att följande gäller:\\
   \varphi_m - 180^\circ = \arg\{G(j\omega_c)\}
 \end{align*}
 
-På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$.
+På \mhb{sid 62} finns det några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$.
 
 Överkorsningsfrekvensen ska vara $\omega_c \geq 1$ rad/s. Om vi ansätter problemet med $\omega_c = 1$:
 
@@ -1068,13 +1083,15 @@ Vi vill med andra ord räkna ut absolutbeloppet av $|G(j\omega_{\varphi_{max}})F
 
 
 \begin{align*}
-  1 = |L(i)| = |G(i)F(i)| = |G(i)|\cdot|F(i)| = \left | \frac{e^{-j}}{j(j+1)} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j \sqrt{5}}{5}} \right | = \\
-  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j}{\sqrt{5}}} \right | =
-  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{\sqrt{5}+5j}{\sqrt{5} + j} \right | =
-  \frac{|e^{-j}|}{|-1+j|} \cdot |K_p| \frac{|\sqrt{5}+5j|}{|\sqrt{5} + j|} = \\
-  \frac{1}{\sqrt{(-1)^2 + 1^2}} \cdot |K_p| \frac{\sqrt{(\sqrt{5})^2 + 5^2}}{\sqrt{(\sqrt{5})^2 + 1^2}} =
+  1 = |L(i)| = |G(i)F(i)| = |G(i)|\cdot|F(i)| = \\
+  \left | \frac{e^{-j}}{j(j+1)} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j \sqrt{5}}{5}} \right | =
+  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j}{\sqrt{5}}} \right | =\\
+  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p \cdot \frac{\sqrt{5}}{\sqrt{5}}\cdot \frac{1+j\sqrt{5}}{1 + \frac{j}{\sqrt{5}}} \right | =
+  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{\sqrt{5}+5j}{\sqrt{5} + j} \right | =\\
+  \frac{|e^{-j}|}{|-1+j|} \cdot |K_p| \frac{|\sqrt{5}+5j|}{|\sqrt{5} + j|} =
+  \frac{1}{\sqrt{(-1)^2 + 1^2}} \cdot |K_p| \frac{\sqrt{(\sqrt{5})^2 + 5^2}}{\sqrt{(\sqrt{5})^2 + 1^2}} =\\
   \frac{1}{\sqrt{2}} \cdot |K_p| \frac{\sqrt{30}}{\sqrt{6}} =
-  |K_p| \frac{1}{\sqrt{2}} \sqrt{\frac{30}{6}} = \\
+  |K_p| \frac{1}{\sqrt{2}} \sqrt{\frac{30}{6}} =
   |K_p| \frac{1}{\sqrt{2}} \sqrt{5} =
   |K_p| \frac{\sqrt{5}}{\sqrt{2}}
 \end{align*}
@@ -1094,7 +1111,56 @@ Stoppar vi in våra värden så får vi alltså följande PD-regulator:
 
 
 
+\section{Tenta 2012-12-21}
+%\subsection{1a}
+%Löst.
+%
+%
+\subsection{1b}
+Vi går över till Laplacedomänen med hjälp av \mhb{L21} och \mhb{L47}:
+\begin{align*}
+  g(t) &= e^{-0.5t}(1 + \cos0.5t) = e^{-0.5t} + e^{-0.5t}\cos 0.5t\\
+  G(s) &= \frac{1}{s+0.5} + \frac{s+0.5}{(s+0.5)^2 + 0.5^2}
+\end{align*}
 
+Enligt \bl{sid 42} så kan vi räkna ut ett systems statiska förstärkning med hjälp av $G(0)$:
+
+\begin{align*}
+  G(0) = \frac{1}{0+0.5} + \frac{0+0.5}{(0+0.5)^2 + 0.5^2} = 3
+\end{align*}
+
+%
+%
+%\subsection{1d}
+%Foto på halva.
+
+
+\subsection{2b}
+\begin{eqnarray*}
+  \text{I.}   & \delta(t)                 &= -k_1 \theta(t) - k_2\frac{d\theta(t)}{dt} - k_3\frac{d^2\theta(t)}{dt^2}\\
+  \text{II.}  & \frac{d\delta(t)}{dt}     &= -k_1 \theta(t) - k_2\frac{d\theta(t)}{dt} - k_3\frac{d^2\theta(t)}{dt^2}\\
+  \text{III.} & \frac{d^2\delta(t)}{dt^2} &= -k_1 \theta(t) - k_2\frac{d\theta(t)}{dt} - k_3\frac{d^2\theta(t)}{dt^2}
+\end{eqnarray*}
+
+Vi går över till Laplacedomänen med hjälp av \mhb{L6}, \mhb{L7} och \mhb{L8}:
+
+\begin{eqnarray*}
+  \text{I.}   & \Delta(s)    &= -k_1 \Theta(s) - k_2 s\Theta(s) - k_3 s^2\Theta(s)\\
+  \text{II.}  & s\Delta(s)   &= -k_1 \Theta(s) - k_2 s\Theta(s) - k_3 s^2\Theta(s)\\
+  \text{III.} & s^2\Delta(s) &= -k_1 \Theta(s) - k_2 s\Theta(s) - k_3 s^2\Theta(s)
+\end{eqnarray*}
+
+Vi kan nu ställa upp överföringsfunktionerna:
+
+\begin{eqnarray*}
+  \text{I.}   & \frac{\Delta(s)}{\Theta(s)} &= -k_1 - k_2 s - k_3 s^2\\
+  \text{II.}  & \frac{\Delta(s)}{\Theta(s)} &= \frac{-k_1 - k_2 s - k_3 s^2}{s} = -\frac{k_1}{s} - k_2 - k_3s\\
+  \text{III.} & \frac{\Delta(s)}{\Theta(s)} &= \frac{-k_1 - k_2 s - k_3 s^2}{s^2} = -\frac{k_1}{s^2} - \frac{k_2}{s} - k_3
+\end{eqnarray*}
+
+Vi vet att $s$-termer är deriverande och $\frac{1}{s}$-termer är integrerande. Vi ser att i \mbox{typ I} så finns enbart $s$-termer, vilket motsvarar en PD-regulator. I typ II så finns $s$- och $\frac{1}{s}$-termer, vilket motsvarar en PID-regulator. I typ III så finns enbart $\frac{1}{s}$-termer, vilket motsvarar en PD-regulator.
+
+\newpage
 %\section{Apa bepa}
 %\begin{tikzpicture}[
 %    scale=1.5,
@@ -1127,13 +1193,13 @@ Stoppar vi in våra värden så får vi alltså följande PD-regulator:
 
 \section{Blockdiagram}
 Introduktionsvideo på enkel nivå:\\
-\href{http://www.youtube.com/watch?v=Wj_vfeuksUM}{http://www.youtube.com/watch?v=Wj\_vfeuksUM}
+\href{http://www.youtube.com/watch?v=Wj_vfeuksUM}{http://www.youtube.com/watch?v=Wj\_vfeuksUM}\\
 
-Exempel på blockdiagramsreduktion:\\
-\href{http://www.youtube.com/watch?v=rNlshpOoyxU}{http://www.youtube.com/watch?v=rNlshpOoyxU}
+Exempel på blockdiagramreduktion:\\
+\href{http://www.youtube.com/watch?v=rNlshpOoyxU}{http://www.youtube.com/watch?v=rNlshpOoyxU}\\
 
-Exempel på blockdiagramsreduktion:\\
-\href{http://www.youtube.com/watch?v=5_DpDB4CWEE}{http://www.youtube.com/watch?v=5\_DpDB4CWEE}
+Exempel på blockdiagramreduktion:\\
+\href{http://www.youtube.com/watch?v=5_DpDB4CWEE}{http://www.youtube.com/watch?v=5\_DpDB4CWEE}\\
 
 Föreläsning om blockdiagram:\\
 \href{https://www.youtube.com/watch?v=X4hPVxZlrPU&list=PL5105727DD6E8DE98&index=6}{https://www.youtube.com/watch?v=X4hPVxZlrPU\\\&list=PL5105727DD6E8DE98\&index=6}
@@ -1146,10 +1212,10 @@ Introduktionsvideo som förklarar lite varför det är gött och lite om hur det
 
 \section{Frekvenssvar och Bodediagram}
 Föreläsning i rätt snabbt tempo om frekvenssvar och bodediagram:\\
-\href{https://www.youtube.com/watch?v=PVV0f6KfjNg&index=6&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=PVV0f6KfjNg\\\&index=6\&list=PL5105727DD6E8DE98}
+\href{https://www.youtube.com/watch?v=PVV0f6KfjNg&index=6&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=PVV0f6KfjNg\\\&index=6\&list=PL5105727DD6E8DE98}\\
 
 Samma föreläsning fast i långsammare tempo:\\
-\href{https://www.youtube.com/watch?v=VfmV0vkc-ks&index=7&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=VfmV0vkc-ks\\\&index=7\&list=PL5105727DD6E8DE98}
+\href{https://www.youtube.com/watch?v=VfmV0vkc-ks&index=7&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=VfmV0vkc-ks\\\&index=7\&list=PL5105727DD6E8DE98}\\
 
 Frekvenssvar och stabilitet:\\
 \href{https://www.youtube.com/watch?v=-YLavh8mIVk&index=8&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=-YLavh8mIVk\\\&index=8\&list=PL5105727DD6E8DE98}
@@ -1166,7 +1232,7 @@ Linjäriseringsuppgifter är ju kul att få på tentan, särskilt när det komme
 \label{sec:partialbråksuppdelning}
 Partialbråksuppdelning är kanske inte något man jobbar med varje dag, så det är rostigt för många. Det är dock ganska lätt. Partialbråksuppdelning används flitigt både i kurserna Reglerteknik och Transformer, Signaler och System, så om det sitter löst så är det bara att bita i det sura äpplet och lära sig. Nedan följer en lite utvidgad förklaring från Matematikrepetionshäftet kaptiel 3.
 
-Vi antar att vi har en rationell funktion (det vill säga en kvot av två polynom) $\frac{B(s)}{A(s)}$ där $B(s)$ har lägre gradtal än $A(s)$ och där nämnaren $A(s)$ är faktoriserad så långt som det går i reella faktorer enligt tabellen nedan.
+Vi antar att vi har en rationell funktion (det vill säga en kvot av två polynom) $\frac{B(s)}{A(s)}$ där $B(s)$ har lägre gradtal än $A(s)$ och där nämnaren $A(s)$ är faktoriserad så långt som det går i reella faktorer enligt tabellen nedan.\\
 
 \begin{tabular}{l | l}
   Faktor i nämnaren ($A(s)$) & Ger upphov till partialbråk \\
@@ -1175,7 +1241,7 @@ Vi antar att vi har en rationell funktion (det vill säga en kvot av två polyno
   $(s - \alpha)^n$   & $\frac{A_1}{s - \alpha} + \frac{A_2}{(s - \alpha)^2} + ... + \frac{A_n}{(s - \alpha)^n}$ \\
   $s^2 + as + b$     & $\frac{B_1s + C_1}{s^2 + as + b}$ \\
   $(s^2 + as + b)^n$ & $\frac{B_1s + C_1}{s^2 + as + b} + \frac{B_2s + C_2}{(s^2 + as + b)^2} + ... + \frac{B_ns + C_n}{(s^2 + as + b)^n}$
-\end{tabular}
+\end{tabular}\\\\
 
 I \mhb{sid 120} står detta kort nämnt, så man behöver inte memorera det utantill. Sätter man samtliga partialbråk på gemensam nämnare så får man ett ekvationssystem med entydig lösning. Exempel:
 
