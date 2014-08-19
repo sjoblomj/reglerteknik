@@ -249,6 +249,8 @@ Detta har vi alltså löst då vi struntat i den tidsfördröjning som fanns med
 \subsection{1b}
 Teorin bakom detta står på \bl{sid 424}.\\\\
 %
+Vi ska bestämma en tillståndsåterkoppling. Med andra ord så har vi ett öppet system, och ska återkoppla det.\\
+%
 I det allmänna fallet så gäller
 \begin{align*}
   \dot{x}(t) =~& Ax(t) + Bu(t) \\
@@ -261,7 +263,7 @@ och i vårt fall så har vi
 \end{align*}
 %
 %
-Polerna kan vi enligt ekvation 3.15 på \bl{sid 92} räkna ut med $\det(sI-A) = 0$. Hur man räknar ut determinanter står på \mhb{sid 93}.
+Då vi har ett öppet system så kan vi enligt ekvation 3.15 på \bl{sid 92} räkna ut polerna med $\det(sI-A) = 0$ (om det var ett slutet system så hade (11.15) på \bl{sid 425} gällt). Hur man räknar ut determinanter står på \mhb{sid 93}.
 %
 \begin{align*}
   \det(sI-A) = 0 \Longleftrightarrow \\
@@ -286,7 +288,7 @@ Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade
   s^2 +4s + l_1s + 3 + l_2 = s^2 + (4+l_1)s + (3 + l_2)
 \end{align*}
 %
-Detta är lika med den karakteristiska ekvationen ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
+Detta är alltså enligt (11.15) lika med den karakteristiska ekvationen ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
 %
 \begin{eqnarray*}
   s^2 + &(4+l_1)s &+ (3 + l_2) = \\
@@ -727,7 +729,7 @@ Samma svar erhålls alltså oavsett angreppssätt.
 
 
 \subsection{3a}
-Som framgår av differentialekvationen och texten så har vi två funktioner som beror av tiden: $u(t)$ och $N(t)$. Vi har också konstanter: $J$, $R$, $K_T$ och $K_E$. Uppgiften är att räkna ut den konstanta spänningen $u_0$ för det konstanta varvtalet $N_0$, det vill säga ersätta de variabla funktionerna $N(t)$ och $u(t)$ med konstanterna $N_0$ respektive $u_0$, och sedan bryta ut $u_0$.
+Som framgår av differentialekvationen och texten så har vi två funktioner som beror av tiden: $u(t)$ och $N(t)$. Vi har också konstanter: $J$, $R$, $K_T$, $K_G$ och $K_E$. Uppgiften är att räkna ut den konstanta spänningen $u_0$ för det konstanta varvtalet $N_0$, det vill säga ersätta de variabla funktionerna $N(t)$ och $u(t)$ med konstanterna $N_0$ respektive $u_0$, och sedan bryta ut $u_0$.
 
 \begin{align*}
   J \frac{dN_0}{dt} + K_G{N_0}^2 = \frac{K_T}{R}(u_0 - K_EN_0)
@@ -757,7 +759,7 @@ Linjärisera!
 När vi först partialderiverar med avseende på $u$ kommer alla termer som inte innehåller $u$ (Term 1, Term 2 och Term 3) betraktas som konstanter. Derivatan av en konstant är som bekant noll, vilket gör att alla termer ej innehållande $u$ då försvinner.
 
 \begin{align*}
-  \frac{\partial g}{\partial u} = \frac{K_T}{R}
+  \frac{\partial g}{\partial u} = -\frac{K_T}{R}
 \end{align*}
 
 På samma sätt gäller att när vi partialderiverar med avseende på $N$, så kommer Term 4 som inte innehåller $N$ att bli 0. Vi får:
@@ -810,11 +812,109 @@ Vi kan nu avläsa $T$.
 Varvtalet, $N_0$, står i nämnaren, det vill säga $T$ minskar med ökat varvtal.
 
 
+\subsection{4a}
+Teorin bakom detta står på \bl{sid 424}.\\\\
+%
+I det allmänna fallet så gäller
+\begin{align*}
+  \dot{x}(t) =~& Ax(t) + Bu(t) \\
+  y(t) =~& Cx(t) + Du(t)
+\end{align*}
+och i vårt fall så har vi
+\begin{align*}
+  \dot{x}(t) =& \begin{bmatrix}0 & 1 \\ 0 & 0\end{bmatrix} x(t) + \begin{bmatrix}-1 \\ 1\end{bmatrix} u(t) \\
+  y(t) =& \begin{bmatrix}1 & 0\end{bmatrix} x(t)\\\\
+  u(t) =& -Lx(t) + K_r r(t)
+\end{align*}
+%
+%
+Då det skall finnas relativ dämpning och naturlig egenfrekvens så ska vi använda följande ekvation från det till tesen bifogade formelbladet.
+
+\begin{align*}
+  G(s) = \frac{\omega_n ^2}{s^2 + 2\zeta \omega_n s + \omega_n^2}
+\end{align*}
+
+Det karakteristiska polynomet för det slutna systemet är alltså för $\zeta = \frac{1}{\sqrt{2}}$ och $\omega_n = \sqrt{2}$:
+
+\begin{align*}
+  \alpha_c(s) = s^2 + 2\zeta \omega_n s + \omega_n^2 = s^2 + 2\frac{1}{\sqrt{2}} \sqrt{2} s + (\sqrt{2})^2 = s^2 + 2s + 2
+\end{align*}
+
+Enligt (11.15) på \bl{sid 425} så gäller följande för det slutna systemet:
+
+\begin{align*}
+  \alpha_c(s) = \det(sI - A + BL)
+\end{align*}
+
+\begin{align*}
+  sI - A + BL = \begin{bmatrix}s & 0 \\ 0 & s\end{bmatrix} - \begin{bmatrix}0 & 1 \\ 0 & 0\end{bmatrix} + \begin{bmatrix}-1 \\ 1\end{bmatrix}\begin{bmatrix}l_1 & l_2\end{bmatrix} = \\
+  \begin{bmatrix}s & -1 \\ 0 & s\end{bmatrix} + \begin{bmatrix}-l_1 & -l_2 \\ l_1 & l_2\end{bmatrix} = \begin{bmatrix}s - l_1 & -1 -l_2 \\ l_1 & s + l_2\end{bmatrix}
+\end{align*}
+
+Hur man räknar ut determinanter står på \mhb{sid 93}.
+
+\begin{align*}
+  \det(sI - A + BL) = \det \left( \begin{bmatrix}s - l_1 & -1 -l_2 \\ l_1 & s + l_2\end{bmatrix} \right) = \\
+  (s - l_1)(s + l_2) - l_1(-1 -l_2) = s^2 + (-l_1 + l_2)s + l_1
+\end{align*}
+
+Detta är alltså lika med det karakteristiska polynomet ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
+%
+\begin{eqnarray*}
+  s^2 + &(-l_1 + l_2)s &+ l_1 = \\
+  s^2 + &2s &+ 2\\
+\end{eqnarray*}
+\vspace{-10mm}
+\begin{align*}
+  \left\{ \begin{array}{ll}
+  -l_1 + l_2 = 2\\
+  l_1 = 2
+  \end{array} \right. \Longleftrightarrow
+  \left\{ \begin{array}{ll}
+  l_1 = 2\\
+  l_2 = 4
+  \end{array} \right.
+\end{align*}
+
+
+
+\subsection{4b}
+Enligt (11.16) på \bl{sid 426} så gäller:
+
+\begin{align*}
+  G_{ry}(s) = C(sI - A + BL)^{-1}BK_r
+\end{align*}
+
+Vi ska alltså lösa ut $K_r$, och för att göra det behöver vi utföra lite matrismultiplikation och räkna ut inversen av $sI - A + BL$. Hur man räknar ut matrisinverser står på \mhb{sid 94}.
+
+\begin{align*}
+  G_{ry}(s) = C(sI - A + BL)^{-1}BK_r = \begin{bmatrix}1 & 0\end{bmatrix} \left(\begin{bmatrix}s - l_1 & -1 -l_2 \\ l_1 & s + l_2\end{bmatrix} \right)^{-1} \begin{bmatrix}-1 \\ 1\end{bmatrix} K_r = \\
+  \begin{bmatrix}1 & 0\end{bmatrix} \left(\frac{1}{(s-l_1)(s+l_2) - l_1(-1-l_2)}\begin{bmatrix}s + l_2 & 1 +l_2 \\ -l_1 & s - l_1\end{bmatrix} \right) \begin{bmatrix}-1 \\ 1\end{bmatrix} K_r = \\
+  \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}s + l_2 & 1 +l_2 \\ -l_1 & s - l_1\end{bmatrix} \begin{bmatrix}-1 \\ 1\end{bmatrix} \frac{K_r}{(s-l_1)(s+l_2) - l_1(-1-l_2)} = \\
+  \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}-(s + l_2) + (1 +l_2) \\ l_1 + (s - l_1)\end{bmatrix} \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
+  \begin{bmatrix}1 & 0\end{bmatrix} \begin{bmatrix}1 - s \\ s\end{bmatrix} \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
+  (1 - s) \frac{K_r}{s^2 + (-l_1 + l_2)s + l_1} = \\
+  \frac{K_r(1 - s)}{s^2 + (-l_1 + l_2)s + l_1}
+\end{align*}
+
+Sätter vi in värdena på $l_1$ och $l_2$ från a)-uppgiften så får vi:
+
+\begin{align*}
+  G_{ry}(s) = \frac{K_r(1 - s)}{s^2 + (-l_1 + l_2)s + l_1} = \frac{K_r(1 - s)}{s^2 + (-2 + 4)s + 2} = \frac{K_r(1 - s)}{s^2 + 2s + 2}
+\end{align*}
+
+Villkoret i stationaritet uppfylls genom att sätta $G_{ry}(0) = 1$:
+\begin{align*}
+  G_{ry}(0) = \frac{K_r(1 - 0)}{0^2 + 2\cdot 0 + 2} = \frac{K_r}{2} = 1 \Longleftrightarrow\\
+  K_r = 2
+\end{align*}
+
+
 \section{Tenta 2013-08-22}
 \subsection{1a}
-Notera att uppgiften säger att $u$ är insignal, och alltså inte ett steg!
+Notera att uppgiften säger att $u$ är insignal, det är alltså inte ett steg som står inskrivet i differentialekvationen. Insignalen är en sinussignal, vilket innebär att vi väljer att ansätta problemet enligt nedan.
 %
-Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$) och \mhb{L4} ($u(t - 2)$):
+Laplacea med hjälp av \mhb{L8} ($\ddot{y}(t)$), \mhb{L7} ($\dot{y}(t)$), \mhb{L6} ($y(t)$) och \mhb{L4} ($u(t - 2)$):
 \begin{align*}
   \ddot y(t) + 3 \dot y(t) + 2y(t) &= 3u(t-2)\\
   s^2Y(s) + 3sY(s) + 2Y(s) &= 3e^{-2s}U(s)\\
@@ -831,18 +931,16 @@ Vi ersätter $s$ med $i\omega$ (det vill säga går över från s-domänen till 
 \end{align*}
 %
 %
-På \mhb{sid 339} regel 7 under `Continuous Systems' ser vi att med en insignal som är $\sin(\omega t)$, så blir \{TODO UTSIGNAL ELLER VADDÅ\} $|G(i\omega)| \sin(\omega t + \arg\{ G(i\omega) \})$.\\
-\oklarhet{Är det utsignalen som blir såhär?}
-Hur vi räknar ut $|G(i\omega)|$ framgår av \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. Hur vi räknar ut $\arg\{ G(i\omega) \}$ framgår av \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$.
+På \mhb{sid 339} regel 7 under `Continuous Systems' ser vi att med en insignal som är $\sin(\omega t)$, så blir utsignalen $|G(i\omega)| \sin(\omega t + \arg\{ G(i\omega) \})$.
 
-Vi börjar med att räkna ut $|G(i\omega)|$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$.
+Vi börjar med att räkna ut $|G(i\omega)|$, och hur vi gör det står beskrivet på \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$.
 \begin{align*}
   |G(i\omega)| = \left|\frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)}\right| = \\
   \frac{|3|\cdot|e^{-2i\omega}|}{|(i\omega + 1)|\cdot|(i\omega + 2)|} = \\
   \frac{3}{\sqrt{\omega^2 + 1^2}\sqrt{\omega^2 + 2^2}}
 \end{align*}
 
-Vi räknar nu ut $\arg\{ G(i\omega) \}$. På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$. Vi ser också att $\arg \{e^{i\theta}\} = \theta$.
+Vi räknar nu ut $\arg\{ G(i\omega) \}$, och hur vi gör det står beskrivet på \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$. På \mhb{sid 62} finns några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$. Vi ser också på \mhb{sid 62} att $\arg \{e^{i\theta}\} = \theta$.
 
 \begin{align*}
   \arg\{ G(i\omega) \} = \arg \left\{ \frac{3e^{-2i\omega}}{(i\omega + 1)(i\omega + 2)} \right\} = \\
@@ -855,7 +953,7 @@ Vi räknar nu ut $\arg\{ G(i\omega) \}$. På \mhb{sid 62} finns några användba
 Vi kan nu skriva upp det hela på önskad form:
 
 \begin{align*}
-  |G(i\omega)| \sin(\omega t + \arg\{ G(i\omega) \}) = \\
+  y(t) = |G(i\omega)| \sin(\omega t + \arg\{ G(i\omega) \}) = \\
   \frac{3}{\sqrt{\omega^2 + 1}\sqrt{\omega^2 + 4}} \sin(\omega t - 2\omega -\arctan\omega - \arctan\frac{\omega}{2})
 \end{align*}
 
@@ -865,6 +963,25 @@ Vi kan nu skriva upp det hela på önskad form:
 
 \section{Tenta 2013-04-05}
 \subsection{5a}
+
+Vår uppgift är att vi blivit givna $G(s)$ (vars egenskaper vi inte kan påverka), och vi ska dimensionera en regulator $F(s)$ som ändrar systemets egenskaper så att de uppfyller uppgiftens krav.
+
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+  \node [input, name=rinput]        (rinput)    {};
+  \node [sum, right of=rinput]      (sum)       {};
+  \node [block, right of=sum]       (blocka)    {$F(s)$};
+  \node [block, right of=blocka]    (blockb)    {$G(s)$};
+  \node [tmp, below of=sum]         (tmp1)      {};
+  \node [tmp, right of=blockb]      (tmp2)      {};
+  \node [tmp, below of=tmp2]        (tmp3)      {};
+  \node [output, right of=tmp2]     (output)    {};
+
+  \draw [->] (rinput) -- node{$r$} (sum);
+  \draw [->] (sum) -- (blocka);
+  \draw [->] (blocka) -- (blockb);
+  \draw [->] (blockb) -- node [name=y] {$y$}(output);
+  \draw [->] (tmp2) -- (tmp3) -- (tmp1) -- node[pos=0.85] {$-$} node[pos=1.25] {$+$} (sum);
+\end{tikzpicture}\\
 
 \begin{align*}
   G(s) = \frac{e^{-s}}{s(s+1)}
@@ -903,11 +1020,78 @@ Fasmarginalen som systemet redan har:
   \Phi_m \approx 180^\circ - 192.3^\circ = -12.3^\circ
 \end{align*}
 
+Alltså, den fasmarginal som $G$ har är $-12.3^\circ$. Vill vill dimensionera $F$ så att $FG \geq 30^\circ$.
+
 \begin{align*}
   \varphi_{m_{\text{ny}}} = 30^\circ - \Phi_m \approx 42.3^\circ
 \end{align*}
 
 Vi ska alltså höja fasmarginalen med $42.3^\circ$. Att höja fasmarginalen innebär att vi ska använda en PD-regulator.
+
+
+\subsection{5b}
+Från formelbladet bifogat tesen så ser vi att en PD-regulator har följande ekvation:
+
+\begin{align*}
+  F_{PD}(s) = K_p \frac{1+s\tau_d}{1+\frac{s\tau_d}{b}}
+\end{align*}
+
+Att dimensionera en regulator, vilket uppgiften ber oss göra, innebär i vårt fall att bestämma värdena i formeln, det vill säga hitta värdena på $K_p$, $\tau_d$ och $b$. Från formelbladet bifogat tesen ser vi också att följande gäller:
+
+\begin{align*}
+  b = \frac{1 + \sin \varphi_{max}}{1 - \sin \varphi_{max}}\\
+  \omega_{\varphi_{max}} = \sqrt{b}/T
+\end{align*}
+
+Vi har att $\varphi_{max} = 42.3^\circ$ och $\omega_{\varphi_{max}} = 1$. Av någon anledning så byter man beteckning mellan formlerna, så $\tau_d = T$.\\
+\oklarhet{Varför är $T = \tau_d$?}
+
+\begin{align*}
+  b = \frac{1 + \sin \varphi_{max}}{1 - \sin \varphi_{max}} = \frac{1 + \sin 42.3}{1 - \sin 42.3} \approx 5\\
+  \omega_{\varphi_{max}} = \sqrt{b}/T \Longleftrightarrow 1 = \sqrt{5}/T \Longleftrightarrow T = \sqrt{5}
+\end{align*}
+
+Vi har nu bestämt $b$ och $T = \tau_d$, och kvar står att bestämma $K_p$. Följande samband gäller tydligen alltid\\
+\oklarhet{Referens?}
+
+\begin{align*}
+  |L(i\omega)| = 1
+\end{align*}
+
+Som bekant är $L(i\omega) = G(i\omega)F(i\omega)$. Vi kan därmed ställa upp följande:
+
+\begin{align*}
+  1 = |L(i\omega)| = |G(i\omega)F(i\omega)|
+\end{align*}
+
+Vi vill med andra ord räkna ut absolutbeloppet av $|G(j\omega_{\varphi_{max}})F(j\omega_{\varphi_{max}})| = |G(j\cdot1)F(j\cdot1)| = |G(j)F(j)|$, och hur vi gör det står beskrivet på \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$.
+
+
+\begin{align*}
+  1 = |L(i)| = |G(i)F(i)| = |G(i)|\cdot|F(i)| = \left | \frac{e^{-j}}{j(j+1)} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j \sqrt{5}}{5}} \right | = \\
+  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j}{\sqrt{5}}} \right | =
+  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{\sqrt{5}+5j}{\sqrt{5} + j} \right | =
+  \frac{|e^{-j}|}{|-1+j|} \cdot |K_p| \frac{|\sqrt{5}+5j|}{|\sqrt{5} + j|} = \\
+  \frac{1}{\sqrt{(-1)^2 + 1^2}} \cdot |K_p| \frac{\sqrt{(\sqrt{5})^2 + 5^2}}{\sqrt{(\sqrt{5})^2 + 1^2}} =
+  \frac{1}{\sqrt{2}} \cdot |K_p| \frac{\sqrt{30}}{\sqrt{6}} =
+  |K_p| \frac{1}{\sqrt{2}} \sqrt{\frac{30}{6}} = \\
+  |K_p| \frac{1}{\sqrt{2}} \sqrt{5} =
+  |K_p| \frac{\sqrt{5}}{\sqrt{2}}
+\end{align*}
+
+Då $|L(i)| = 1$ så kan vi lösa ut $K_p$:
+
+\begin{align*}
+  1 = |K_p| \frac{\sqrt{5}}{\sqrt{2}} \Longleftrightarrow K_p = \frac{\sqrt{2}}{\sqrt{5}}
+\end{align*}
+
+Stoppar vi in våra värden så får vi alltså följande PD-regulator:
+
+\begin{align*}
+  F_{PD}(s) = K_p \frac{1+s\tau_d}{1+\frac{S\tau_d}{b}} = \frac{\sqrt{2}}{\sqrt{5}} \cdot \frac{1+\sqrt{5}s}{1+\frac{\sqrt{5}s}{5}} =
+  \frac{\sqrt{2}}{\sqrt{5}} \cdot \frac{1+\sqrt{5}s}{1+\frac{s}{\sqrt{5}}} = \frac{\sqrt{2}+\sqrt{10}s}{\sqrt{5} + s}
+\end{align*}
+
 
 
 
@@ -941,7 +1125,7 @@ Vi ska alltså höja fasmarginalen med $42.3^\circ$. Att höja fasmarginalen inn
 %\end{tikzpicture}
 
 
-\section{Block diagrams}
+\section{Blockdiagram}
 Introduktionsvideo på enkel nivå:\\
 \href{http://www.youtube.com/watch?v=Wj_vfeuksUM}{http://www.youtube.com/watch?v=Wj\_vfeuksUM}
 
@@ -958,6 +1142,17 @@ Föreläsning om blockdiagram:\\
 \section{State Space}
 Introduktionsvideo som förklarar lite varför det är gött och lite om hur det fungerar:\\
 \href{https://www.youtube.com/watch?v=-k2a5d-X1Gc}{https://www.youtube.com/watch?v=-k2a5d-X1Gc}
+
+
+\section{Frekvenssvar och Bodediagram}
+Föreläsning i rätt snabbt tempo om frekvenssvar och bodediagram:\\
+\href{https://www.youtube.com/watch?v=PVV0f6KfjNg&index=6&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=PVV0f6KfjNg\\\&index=6\&list=PL5105727DD6E8DE98}
+
+Samma föreläsning fast i långsammare tempo:\\
+\href{https://www.youtube.com/watch?v=VfmV0vkc-ks&index=7&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=VfmV0vkc-ks\\\&index=7\&list=PL5105727DD6E8DE98}
+
+Frekvenssvar och stabilitet:\\
+\href{https://www.youtube.com/watch?v=-YLavh8mIVk&index=8&list=PL5105727DD6E8DE98}{https://www.youtube.com/watch?v=-YLavh8mIVk\\\&index=8\&list=PL5105727DD6E8DE98}
 
 
 \section{Linjärisering}
@@ -985,15 +1180,15 @@ Vi antar att vi har en rationell funktion (det vill säga en kvot av två polyno
 I \mhb{sid 120} står detta kort nämnt, så man behöver inte memorera det utantill. Sätter man samtliga partialbråk på gemensam nämnare så får man ett ekvationssystem med entydig lösning. Exempel:
 
 \begin{align}
-  \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \label{eqn:partfracA}\\%&\Longleftrightarrow \\
-  (s+1)^2(s+2) \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= (s+1)^2(s+2) \left( \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \right) \label{eqn:partfracB}% &\Longleftrightarrow
+  \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \label{eqn:partfracA}\\
+  (s+1)^2(s+2) \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= (s+1)^2(s+2) \left( \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \right) \label{eqn:partfracB}
 \end{align}
 \vspace{-7mm}
 \begin{align}
   %2s^2 + s -3 &= \frac{A_1}{s+1}(s+1)^2(s+2) + \frac{A_2}{(s+1)^2}(s+1)^2(s+2) + \frac{A_3}{s+2}(s+1)^2(s+2) &\Longleftrightarrow \\
-  2s^2 + s -3 &= A_1(s+1)(s+2) + A_2(s+2) + A_3(s+1)^2 \label{eqn:partfracC}\\%&\Longleftrightarrow \\
-  2s^2 + s -3 &= s^2A_1 + 3sA_1 + 2A_1 + A_2s + 2A_2 + A_3s^2 + 2sA_3 + A_3 \label{eqn:partfracD}\\%&\Longleftrightarrow \\
-  2s^2 + s -3 &= (A_1 + A_3)s^2 + (3A_1 + A_2 + 2A_3)s + (2A_1 + 2A_2 + A_3) \label{eqn:partfracE}%&\Longleftrightarrow \\
+  2s^2 + s -3 &= A_1(s+1)(s+2) + A_2(s+2) + A_3(s+1)^2 \label{eqn:partfracC}\\
+  2s^2 + s -3 &= s^2A_1 + 3sA_1 + 2A_1 + A_2s + 2A_2 + A_3s^2 + 2sA_3 + A_3 \label{eqn:partfracD}\\
+  2s^2 + s -3 &= (A_1 + A_3)s^2 + (3A_1 + A_2 + 2A_3)s + (2A_1 + 2A_2 + A_3) \label{eqn:partfracE}
 \end{align}
 
 Vi utgår från problemet i vänsterledet i (\ref{eqn:partfracA}), och partialbråksuppdelar det enligt tabellen, varpå högerledet i (\ref{eqn:partfracA}) erhålls. I steg (\ref{eqn:partfracB}) så multiplicerar vi båda sidor av ekvationen med nämnaren i vänsterledet i (\ref{eqn:partfracA}). Vi förenklar det hela i steg (\ref{eqn:partfracC}) och (\ref{eqn:partfracD}). I (\ref{eqn:partfracE}) så ``klumpar vi ihop'' alla koefficienter till de olika gradtalen av $s$. Vi kan nu identifiera koefficienterna:
@@ -1036,7 +1231,7 @@ Uttryckt lite slarvigt, om vi betraktar (\ref{eqn:partfracE}) så ser vi att koe
     0  &1  &0  &-2 \\
     0  &0  &1  &3
   \end{amat}
-  \grstep{-\rho_3 +\rho_1}
+  \grstep{~-\rho_3 +\rho_1}
   &\begin{amat}[r]{3}
     1  &0  &0  &-1 \\
     0  &1  &0  &-2 \\
