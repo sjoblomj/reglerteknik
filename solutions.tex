@@ -1160,6 +1160,76 @@ Vi kan nu ställa upp överföringsfunktionerna:
 
 Vi vet att $s$-termer är deriverande och $\frac{1}{s}$-termer är integrerande. Vi ser att i \mbox{typ I} så finns enbart $s$-termer, vilket motsvarar en PD-regulator. I typ II så finns $s$- och $\frac{1}{s}$-termer, vilket motsvarar en PID-regulator. I typ III så finns enbart $\frac{1}{s}$-termer, vilket motsvarar en PD-regulator.
 
+
+\subsection{5a}
+Vi skriver upp signalerna från blockdiagrammet i uppgiften. Efter det flyttar vi om uttrycken algebraiskt. Sedan utnyttjar vi \mhb{L7}, det vill säga $\mathcal{L}\{\dot{f}(t)\} = sF(s)$.
+\begin{align*}
+  x_1 & = \frac{1}{s}x_2   & \Longleftrightarrow ~ & sx_1 = x_2       & \Longleftrightarrow ~ & \dot{x}_1 = x_2       & \Longleftrightarrow ~ & \dot{x}_1 = x_2\\
+  x_2 & = \frac{1}{s+1}x_3 & \Longleftrightarrow ~ & sx_2 + x_2 = x_3 & \Longleftrightarrow ~ & \dot{x}_2 + x_2 = x_3 & \Longleftrightarrow ~ & \dot{x}_2 = -x_2 + x_3\\
+  x_3 & = \frac{5}{s+5}u   & \Longleftrightarrow ~ & sx_3 + 5x_3 = 5u & \Longleftrightarrow ~ & \dot{x}_3 + 5x_3 = 5u & \Longleftrightarrow ~ & \dot{x}_3 = -5x_3 + 5u
+\end{align*}
+
+
+\subsection{5b}
+Vi ska enligt uppgiften ha en pol i $p_1 = -10$, en i $p_2 = -1 - i$ och en i $p_3 = -1 + i$. Vi räknar ut uttrycket för de två komplexkonjugerade polerna genom att räkna PQ-formeln baklänges:
+
+\begin{align*}
+  s = -1 \pm i\\
+  s = -1 \pm \sqrt{-1}\\
+  s = -\frac{2}{2} \pm \sqrt{\left(\frac{2}{2}\right)^2 - 2}\\
+  s^2 + 2s + 2 = 0
+\end{align*}
+
+För polen $p_1 = -10$ så får vi uttrycket $s + 10$. Kombinerar vi polernas uttryck så får vi följande karakteristiska ekvation:
+
+\begin{align*}
+  \alpha_c(s) = (s + 10)(s^2 + 2s + 2) = s^3 + 12s^2 + 22s + 20
+\end{align*}
+
+Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), leder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, den karakteristiska ekvationen vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
+
+Från a)-uppgiften får vi följande A- och B-matris.
+\begin{align*}
+  \dot{x}(t) =& \begin{bmatrix}0 & 1 & 0 \\ 0 & -1 & 1 \\ 0 & 0 & -5\end{bmatrix} x(t) + \begin{bmatrix}0 \\ 0 \\ 5\end{bmatrix} u(t) \\
+\end{align*}
+
+Hur man räknar ut determinanter står på \mhb{sid 93}.
+
+\begin{align*}
+  \det(s I - A + BL) = \\
+  \det\left(\begin{bmatrix}s & 0 & 0 \\ 0 & s & 0 \\ 0 & 0 & s \end{bmatrix} - \begin{bmatrix}0 & 1 & 0 \\ 0 & -1 & 1 \\ 0 & 0 & -5\end{bmatrix} + \begin{bmatrix}0 \\ 0 \\ 5\end{bmatrix} \begin{bmatrix}l_1 & l_2 & l_3\end{bmatrix} \right) = \\
+  \det \left(\begin{bmatrix}s & -1 & 0 \\ 0 & s + 1 & -1 \\ 0 & 0 & s + 5 \end{bmatrix} + \begin{bmatrix}0 & 0 & 0 \\ 0 & 0 & 0 \\ 5l_1 & 5l_2 & 5l_3\end{bmatrix} \right) =\\
+  \det \left(\begin{bmatrix}s & -1 & 0 \\ 0 & s + 1 & -1 \\ 5l_1 & 5l_2 & s + 5 + 5l_3 \end{bmatrix} \right) = \\
+  s(s+1)(s+5+5l_3) + (-1)(-1)5l_1 - s(-1)5l_2 =\\
+  s^3 + (6+5l_3)s^2 + (5 + 5l_2 + 5l_3)s + 5l_1
+\end{align*}
+
+Detta är alltså enligt (11.15) lika med den karakteristiska ekvationen ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$, $l_2$ och $l_3$:
+
+\begin{align*}
+  s^3 &+ &12s^2       &+ &22s                &+ &20 =\\
+  s^3 &+ &(6+5l_3)s^2 &+ &(5 + 5l_2 + 5l_3)s &+ &5l_1
+\end{align*}
+
+\begin{align*}
+  \left\{ \begin{array}{ll}
+  6 + 5l_3 = 12\\
+  5 + 5l_2 + 5l_3 = 22 \\
+  5l_1 = 20
+  \end{array} \right. \Longleftrightarrow
+  \left\{ \begin{array}{ll}
+  l_1 = 4\\
+  l_2 = 2.2\\
+  l_3 = 1.2
+  \end{array} \right.
+\end{align*}
+
+
+
+
+
+
+
 \newpage
 %\section{Apa bepa}
 %\begin{tikzpicture}[
