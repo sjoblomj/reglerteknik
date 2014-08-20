@@ -1079,12 +1079,13 @@ Som bekant är $L(i\omega) = G(i\omega)F(i\omega)$. Vi kan därmed ställa upp f
   1 = |L(i\omega)| = |G(i\omega)F(i\omega)|
 \end{align*}
 
-Vi vill med andra ord räkna ut absolutbeloppet av $|G(j\omega_{\varphi_{max}})F(j\omega_{\varphi_{max}})| = |G(j\cdot1)F(j\cdot1)| = |G(j)F(j)|$, och hur vi gör det står beskrivet på \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$.
+Vi vill med andra ord räkna ut absolutbeloppet av $|G(j\omega_{\varphi_{max}})F(j\omega_{\varphi_{max}})| = |G(j\cdot1)F(j\cdot1)| = |G(j)F(j)|$, och hur vi gör det står beskrivet på \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$. Vi ser också på \mhb{sid 62} att $|e^{i\theta}| = 1$. Vi kommer också förenkla uttrycket genom att utnyttja att $5 = (\sqrt{5})^2 = \sqrt{5}\sqrt{5}$.
 
 
 \begin{align*}
   1 = |L(i)| = |G(i)F(i)| = |G(i)|\cdot|F(i)| = \\
   \left | \frac{e^{-j}}{j(j+1)} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j \sqrt{5}}{5}} \right | =
+  \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j \sqrt{5}}{\sqrt{5}\sqrt{5}}} \right | =
   \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{1+j\sqrt{5}}{1 + \frac{j}{\sqrt{5}}} \right | =\\
   \left | \frac{e^{-j}}{-1+j} \right | \left | K_p \cdot \frac{\sqrt{5}}{\sqrt{5}}\cdot \frac{1+j\sqrt{5}}{1 + \frac{j}{\sqrt{5}}} \right | =
   \left | \frac{e^{-j}}{-1+j} \right | \left | K_p\frac{\sqrt{5}+5j}{\sqrt{5} + j} \right | =\\
@@ -1159,6 +1160,128 @@ Vi kan nu ställa upp överföringsfunktionerna:
 \end{eqnarray*}
 
 Vi vet att $s$-termer är deriverande och $\frac{1}{s}$-termer är integrerande. Vi ser att i \mbox{typ I} så finns enbart $s$-termer, vilket motsvarar en PD-regulator. I typ II så finns $s$- och $\frac{1}{s}$-termer, vilket motsvarar en PID-regulator. I typ III så finns enbart $\frac{1}{s}$-termer, vilket motsvarar en PD-regulator.
+
+
+\subsection{3a}
+\begin{align*}
+  G_{vy}(s) = \frac{G(s)}{1 + G(s)F(s)} = \frac{\frac{1}{s(s+4)^2}}{1 + \frac{1}{s(s+4)^2}F(s)} = \\
+  \frac{s(s+4)^2}{s(s+4)^2}\frac{\frac{1}{s(s+4)^2}}{1 + \frac{1}{s(s+4)^2}F(s)} = \frac{1}{s(s+4)^2 + F(s)}
+\end{align*}
+
+Det kvarstående felet skall elimineras, alltså skall vi använda slutvärdessatsen. Då felet skall eliminineras skall det alltså bli noll. Signalen $v$, som vi just nu betraktar som insignal, är ett steg, det vill säga $\frac{1}{s}$ i Laplacedomänen.
+
+Om vi sätter upp detta får vi:
+
+\begin{align*}
+  Y_{vy}(s) = G_{vy}(s) V(s) = \frac{1}{s(s+4)^2 + F(s)} \frac{1}{s}
+\end{align*}
+
+Vi tillämpar slutvärdessatsen från det till tesen bifogade formelbladet:
+
+\begin{align*}
+  \lim_{t \rightarrow \infty} y_{vy}(t) = \lim_{s \rightarrow 0} sY_{vy}(s) = \lim_{s \rightarrow 0} s \frac{1}{s(s+4)^2 + F(s)} \frac{1}{s} = \lim_{s \rightarrow 0} \frac{1}{s(s+4)^2 + F(s)}
+\end{align*}
+
+Vi kommer få följande när $s$ går mot noll:
+
+\begin{align*}
+  \frac{1}{0(0+4)^2 + F(s)} = \frac{1}{F(0)}
+\end{align*}
+
+Detta är alltså det kvarstående felet, och då det enligt uppgiften skall elimineras, skall det vara lika med noll. Vi får:
+
+\begin{align*}
+  \frac{1}{F(0)} = 0
+\end{align*}
+
+Detta gäller när $s$ går mot noll. Vi ser att det bara finns ett sätt att uppfylla den likheten, nämligen genom att $F(s)$ är ett bråk med en $s$-term i nämnaren. Med slarvig notation gäller alltså följande:
+
+\begin{align*}
+  \frac{1}{F(s)} = \frac{1}{\frac{1}{s}} = s
+\end{align*}
+
+Att $F(s)$ har en $\frac{1}{s}$-term innebär att $F(s)$ innehåller en integrering. Observera dock att vi med vårt resonemang ovan enbart har konstaterat att $F(s)$ innehåller en $\frac{1}{s}$-term, inte att $F(s) = \frac{1}{s}$.
+
+
+\subsection{3b}
+Vi har att $\arg\{ G(i\omega_{150}) \} = -150^\circ$. Vi börjar alltså med att räkna ut $\arg \{ G(i\omega) \}$, och hur vi gör det står beskrivet på \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$. På \mhb{sid 62} finns det några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$. Värdena på arctan kommer från tabellen på \mhb{sid 130}. På \mhb{sid 125} ser vi hur vi konverterar mellan grader och radianer.
+
+\begin{align*}
+  \arg\{ G(i\omega) \} = \arg \left \{ \frac{1}{i\omega(i\omega + 4)^2} \right \} =
+  \arg \left \{ \frac{1}{i\omega(i\omega + 4)(i\omega + 4)} \right \} =\\
+  \arg \{ 1 \} -(\arg\{ i\omega(i\omega + 4)(i\omega + 4) \}) =\\
+  \arg \{ 1 \} -(\arg\{ i\omega\} + \arg\{ i\omega + 4 \} + \arg\{ i\omega + 4\}) =\\
+  \arctan\frac{0}{1} - \arctan \frac{\omega}{0} -\arctan\frac{\omega}{4} -\arctan\frac{\omega}{4} =\\
+  \arctan 0 - \arctan \infty -2\arctan\frac{\omega}{4} =\\
+  0 -\frac{\pi}{2} -2\arctan\frac{\omega}{4} =\\
+  -\frac{\pi}{2}\frac{180^\circ}{\pi} -2\arctan\frac{\omega}{4} =\\
+  -90^\circ -2\arctan\frac{\omega}{4}\\
+\end{align*}
+
+Vi vet alltså att $\arg \{ G(i\omega) \} = -90^\circ -2\arctan\frac{\omega}{4}$, och vi vet att $\arg\{ G(i\omega_{150}) \} = -150^\circ$.
+
+\begin{align*}
+  -90^\circ -2\arctan\frac{\omega_{150}}{4} = -150^\circ \Longleftrightarrow\\
+  \arctan\frac{\omega_{150}}{4} = \frac{150^\circ - 90^\circ}{2} \Longleftrightarrow\\
+  \frac{\omega_{150}}{4} = \tan 30^\circ \Longleftrightarrow\\
+  \omega_{150} = 4\tan 30^\circ \approx 2.3 \text{rad/s}\\
+\end{align*}
+
+Vi ska bestämma överkorsningsfrekvensen $\omega_c$, och enligt uppgiften så gäller $\omega_c = 0.4\omega_{150} = 0.4 \cdot 4\tan 30^\circ \approx 0.9$ rad/s.
+
+
+\subsection{3c}
+Från a)-uppgiften ser vi att en PI-regulator är lämplig, och från b)-uppgiften vet vi att $\omega_c \approx 0.9$ rad/s. Från det till tesen bifogade formelbladet så ser vi formeln för en PI-regulator:
+
+\begin{align*}
+  F_{PI}(s) = K_p\left( 1 + \frac{1}{T_i s}\right ) = K_p\left( \frac{T_i s}{T_i s} + \frac{1}{T_i s}\right ) = K_p\frac{1 + T_i s}{T_i s}
+\end{align*}
+
+Vår uppgift nu är att hitta de obekanta variablerna, det vill säga $T_i$ och $K_p$. Vi börjar med att räkna ut $T_i$.
+
+Vi vet från uppgiften att $\varphi_m = 50^\circ$ och vi nyttjar följande kända formel:
+
+\begin{align*}
+  \varphi_m - 180^\circ &=  \arg \{ F(i\omega)G(i\omega) \} \Longleftrightarrow\\
+  50^\circ - 180^\circ  &=  \arg \{ F(i\omega) \} + \arg \{ G(i\omega) \}\Longleftrightarrow\\
+  \arg \{ F(i\omega) \} &= -\arg \{ G(i\omega) \} -130^\circ
+\end{align*}
+
+Från b)-uppgiften så vet vi att $\arg \{ G(i\omega_c) \} = -90^\circ -2\arctan\frac{\omega_c}{4}$ och att $\omega_c \approx 0.9$.
+
+\begin{align*}
+  \arg \{ F(i\omega_c) \} = -\arg \{ G(i\omega_c) \} -130^\circ =\\
+  -(-90^\circ -2\arctan\frac{\omega_c}{4}) -130^\circ \approx \\
+  90^\circ + 2\arctan\frac{0.9}{4} -130^\circ \approx -14^\circ
+\end{align*}
+
+Vi vet nu att $\arg \{ F(i\omega_c) \} \approx -14^\circ$, och kan med hjälp av det räkna ut $T_i$:
+
+\begin{align*}
+  \arg \{ F_{PI}(i\omega_c) \} = \arg \left \{ K_p \frac{1 + T_i \omega_c i}{T_i \omega_c i}\right \} = \\
+  \arg \{ K_p \} + \arg \{ 1 + T_i \omega_c i \} -\arg\{T_i \omega_c i \} =\\
+  \arctan \frac{0}{K_p} + \arctan \frac{T_i \omega_c}{1} - \arctan\frac{T_i \omega_c}{0} = \\
+  \arctan 0 + \arctan T_i \omega_c - \arctan\infty = \\
+  0 + \arctan T_i \omega_c - \frac{\pi}{2} = \\
+  \arctan T_i \omega_c - \frac{\pi}{2}\frac{180^\circ}{\pi} = \\
+  \arctan T_i \omega_c - 90^\circ \approx -14^\circ \Longrightarrow \\
+  T_i \omega_c = \tan(-14^\circ +90^\circ) \Longleftrightarrow \\
+  T_i = \frac{\tan 76^\circ}{0.9} \approx 4.5
+\end{align*}
+
+Vi har nu värdet på $T_i$, och kvar står bara att räkna ut $K_p$. Vi vet att det alltid gäller $|F(i\omega_c)G(i\omega_c)| = 1$. Hur vi räknar på absolutbelopp står beskrivet på \mhb{sid 61}: $|z| = \sqrt{(\text{Re\{z\}})^2 + (\text{Im\{z\}})^2}$. På \mhb{sid 61} finns några användbara räkneregler för absolutbelopp: $|z_1 z_2| = |z_1|\cdot |z_2|$ och $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$.
+
+\begin{align*}
+  |F(i\omega_c)G(i\omega_c)| = 1 \\
+  |F(i\omega_c)|\cdot|G(i\omega_c)| = 1\\
+  \left|K_p \frac{1 + T_i \omega_c i}{T_i \omega_c i}\right| \cdot \left|\frac{1}{j\omega_c(j\omega_c + 4)^2}\right| = 1\\
+  |K_p| \frac{|1 + T_i \omega_c i|}{|T_i \omega_c i|} \cdot \frac{|1|}{|j\omega_c|\cdot|(j\omega_c + 4)|\cdot|(j\omega_c + 4)|} = 1\\
+  |K_p| \frac{\sqrt{1^2 + (T_i \omega_c)^2}}{\sqrt{(T_i \omega_c)^2}} \cdot \frac{\sqrt{1^2}}{\sqrt{(\omega_c)^2}\sqrt{\omega_c^2 + 4^2}\sqrt{\omega_c^2 + 4^2}} = 1\\
+  |K_p| \frac{\sqrt{1 + (T_i \omega_c)^2}}{T_i \omega_c} \frac{1}{\omega_c(\omega_c^2 + 4^2)} = 1\\
+  |K_p| \frac{\sqrt{1 + (T_i \omega_c)^2}}{T_i \omega_c^2(\omega_c^2 + 16)} = 1\\
+  K_p = \frac{T_i \omega_c^2(\omega_c^2 + 16)}{\sqrt{1 + (T_i \omega_c)^2}} \approx\\
+  \frac{4.5 \cdot 0.9^2(0.9^2 + 16)}{\sqrt{1 + (4.5 \cdot 0.9)^2}} \approx 15
+\end{align*}
 
 
 \subsection{5a}
