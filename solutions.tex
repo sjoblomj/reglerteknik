@@ -200,7 +200,7 @@ Vi vill bestämma systemets stegsvar, det vill säga $y(t)$ då insignalen är e
   G_{\text{ny}}(s) = \frac{Y(s)}{U(s)} \Longleftrightarrow Y(s) = G_{\text{ny}}(s)U(s) = \frac{1}{s^2 + s} \cdot \frac{1}{s} = \frac{1}{s^2(s + 1)}
 \end{align*}
 
-För att lösa detta använder vi oss av partialbråksuppdelning (se sektion \ref{sec:partialbråksuppdelning}).
+För att lösa detta använder vi oss av partialbråksuppdelning (se kapitel \ref{sec:partialbråksuppdelning}).
 
 \begin{align*}
   Y(s) &= \frac{1}{s^2(s + 1)} = \frac{A}{s^2} + \frac{B}{s} + \frac{C}{s+1} \Longleftrightarrow \\
@@ -265,9 +265,9 @@ Detta har vi alltså löst då vi struntat i den tidsfördröjning som fanns med
 
 
 \subsection{1b}
-Teorin bakom detta står på \bl{sid 424}.\\\\
+Teorin bakom detta står på \bl{sid 424}.\\
 
-Vi ska bestämma en tillståndsåterkoppling. Med andra ord så har vi ett öppet system, och ska återkoppla det.\\
+Vi ska bestämma en tillståndsåterkoppling. Med andra ord så har vi ett öppet system, och ska återkoppla det.
 
 I det allmänna fallet så gäller
 \begin{align*}
@@ -294,9 +294,9 @@ Då vi har ett öppet system så kan vi enligt ekvation 3.15 på \bl{sid 92} rä
 
 
 \oklarhet{Referens till polavstånd vs. hastighet på systemet?}\\
-Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $s_2=-1$. Detta innebär att vi vill placera den långsamma polen $s_2$ i den snabba polen $s_1$. Alltså sätter vi att $s_1 = s_2 = -3$. Har vi båda polerna i $-3$ så blir den karakteristiska ekvationen $\alpha_c(s) = (s+3)^2 = s^2 + 6s + 9$.\\
+Ökat avstånd till origo ger snabbare system. Den långsamma polen är alltså $s_2=-1$. Detta innebär att vi vill placera den långsamma polen $s_2$ i den snabba polen $s_1$. Alltså sätter vi att $s_1 = s_2 = -3$. Har vi båda polerna i $-3$ så blir det karakteristiska polynomet $\alpha_c(s) = (s+3)^2 = s^2 + 6s + 9$.\\
 
-Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), leder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, den karakteristiska ekvationen vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
+Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade polplaceringen för det återkopplade systemet i form av det karakteristiska polynomet ($\alpha_c(s)$), leder det till att följande polynomidentitet ska uppfyllas: $\alpha_c(s) = \det(sI -A + BL_u)$''. Med andra ord, det karakteristiska polynomet vi nyss räknade ut ska vara lika med $\det(sI -A + BL)$.
 
 \begin{align*}
   \det(s I - A + BL) = \det\left(\begin{bmatrix}s & 0 \\ 0 & s \end{bmatrix} - \begin{bmatrix}-4 & -3 \\ 1 & 0\end{bmatrix} + \begin{bmatrix}1 \\ 0\end{bmatrix} \begin{bmatrix}l_1 & l_2\end{bmatrix} \right) = \\
@@ -305,13 +305,13 @@ Enligt (11.15) på \bl{sid 425} så gäller att när vi ``uttrycker den önskade
   s^2 +4s + l_1s + 3 + l_2 = s^2 + (4+l_1)s + (3 + l_2)
 \end{align*}
 
-Detta är alltså enligt (11.15) lika med den karakteristiska ekvationen ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
+Detta är alltså enligt (11.15) lika med det karakteristiska polynomet ($\alpha_c(s)$), varifrån vi kan identifiera värden på $l_1$ och $l_2$:
 
 \begin{eqnarray*}
   s^2 + &(4+l_1)s &+ (3 + l_2) = \\
-  s^2 + &6s &+ 9\\
+  s^2 + &6s &+ 9
 \end{eqnarray*}
-\vspace{-10mm}
+
 \begin{align*}
   \left\{ \begin{array}{ll}
   4+l_1 = 6\\
@@ -322,6 +322,7 @@ Detta är alltså enligt (11.15) lika med den karakteristiska ekvationen ($\alph
   l_2 = 6
   \end{array} \right.
 \end{align*}
+\\\\
 
 
 \subsection{1d}
@@ -348,12 +349,13 @@ Nu har vi\\
 
 Från bifogat formelblad till tesen så har vi att Tustin-diskretisering innebär:
 \begin{align*}
-  s \rightarrow \frac{2}{h} \frac{1 - z^{-1}}{1 + z ^{-1}} = \frac{2}{h} \frac{1 - \frac{1}{z}}{1 + \frac{1}{z}} = \frac{2}{h} \frac{z - 1}{z + 1}
+  s \rightarrow \frac{2}{h} \frac{1 - z^{-1}}{1 + z ^{-1}} = \frac{2}{h} \frac{1 - \frac{1}{z}}{1 + \frac{1}{z}} = \frac{2}{h} \frac{z}{z} \frac{1 - \frac{1}{z}}{1 + \frac{1}{z}} = \frac{2}{h} \frac{z - 1}{z + 1}
 \end{align*}
 
 Om vi Tustin-diskretiserar $H(s)$ så får vi:
 \begin{align*}
-  H(z) = \frac{\frac{2}{h} \frac{z - 1}{z + 1}}{\omega_c + \frac{2}{h} \frac{z - 1}{z + 1}} = \frac{2(z - 1)}{\omega_c h (z+1) + 2(z-1)} = \frac{z-1}{z-1 + \frac{1}{2} \omega_c h (z+1)}
+  H(z) = \frac{\frac{2}{h} \frac{z - 1}{z + 1}}{\omega_c + \frac{2}{h} \frac{z - 1}{z + 1}} = \frac{h(z+1)}{h(z+1)} \frac{\frac{2}{h} \frac{z - 1}{z + 1}}{\omega_c + \frac{2}{h} \frac{z - 1}{z + 1}} = \\
+  \frac{2(z - 1)}{\omega_c h (z+1) + 2(z-1)} = \frac{z-1}{z-1 + \frac{1}{2} \omega_c h (z+1)}
 \end{align*}
 
 På något sätt så ser vi att $\omega_c = 2\pi \cdot 500$ Hz. Vi ljuger oss också till att $h$ är angivet i sekunder, och att $h = 10^4 \text{ Hz} \Rightarrow (10^4)^{-1}$. Sätter vi in det så får vi:\\
@@ -377,7 +379,7 @@ Sätt nämnaren till 0 och lös:
   s^2+2s+6 = 0\\
   s = -\frac{2}{2} \pm \sqrt{\left(\frac{2}{2}\right)^2 -6}\\
   s = -1 \pm \sqrt{-5}\\
-  s_1 = -1 + 5i, \qquad s_2 = -1 - 5i
+  s_1 = -1 + i\sqrt{5}, \qquad s_2 = -1 - i\sqrt{5}
 \end{align*}
 
 Vi ser att båda polerna har imaginära delar, men det spelar ingen roll. Det viktiga är att båda ligger i vänster halvplan, vilket de ju gör. $G_1(s)$ är alltså stabilt.
@@ -474,7 +476,7 @@ Standardformen för att rita en enkel positiv återkoppling är:\\
 \end{tikzpicture}\\
 
 
-Överföringsfunktionen för ett sådant system är som bekant
+Överföringsfunktionen för ett sådant system är
 \begin{align*}
   \frac{y}{r} = \frac{F(s)}{1 - F(s)G(s)}
 \end{align*}
@@ -749,7 +751,7 @@ Som framgår av differentialekvationen och texten så har vi två funktioner som
   J \frac{dN_0}{dt} + K_G{N_0}^2 = \frac{K_T}{R}(u_0 - K_EN_0)
 \end{align*}
 
-Den första termen, $\frac{dN_0}{dt}$, deriverar en konstant med avseende på tiden. En derivata av en konstant är noll, varpå den termen faller bort. Vi får:
+Den första termen, $\frac{dN_0}{dt}$, deriverar nu en konstant med avseende på tiden. En derivata av en konstant är noll, varpå den termen faller bort. Vi får:
 
 \begin{align*}
   0 + K_G{N_0}^2 &= \frac{K_T}{R}u_0 - \frac{K_T}{R}K_EN_0\\
@@ -759,7 +761,7 @@ Den första termen, $\frac{dN_0}{dt}$, deriverar en konstant med avseende på ti
 
 
 \subsection{3b}
-Se sektion \ref{sec:linjärisering} för bakgrund till linjärisering. Vi börjar med att kalla differentialekvationen för $g$ och flyttar över alla termer till samma sida.
+Se kapitel \ref{sec:linjärisering} för bakgrund till linjärisering. Vi börjar med att kalla differentialekvationen för $g$ och flyttar över alla termer till samma sida.
 
 \begin{align*}
   g(u, N) = \underbrace{J \frac{dN(t)}{dt}}_{\text{Term 1}} + \underbrace{K_G{N(t)}^2\frac{ }{ }}_{\text{Term 2}} + \underbrace{\frac{K_T K_E}{R} N(t)}_{\text{Term 3}} - \underbrace{\frac{K_T}{R}u(t)}_{\text{Term 4}}
@@ -773,13 +775,13 @@ Linjärisera!
 När vi först partialderiverar med avseende på $u$ kommer alla termer som inte innehåller $u$ (Term 1, Term 2 och Term 3) betraktas som konstanter. Derivatan av en konstant är som bekant noll, vilket gör att alla termer ej innehållande $u$ då försvinner.
 
 \begin{align*}
-  \frac{\partial g}{\partial u} = -\frac{K_T}{R}
+  \frac{\partial g}{\partial u} = \underbrace{0\frac{ }{ }}_{\text{Term 1}} + \underbrace{0\frac{ }{ }}_{\text{Term 2}} + \underbrace{0\frac{ }{ }}_{\text{Term 3}} - \underbrace{\frac{K_T}{R}}_{\text{Term 4}} = -\frac{K_T}{R}
 \end{align*}
 
 På samma sätt gäller att när vi partialderiverar med avseende på $N$, så kommer Term 4 som inte innehåller $N$ att bli 0. Vi får:
 
 \begin{align*}
-  \frac{\partial g}{\partial N} = J\frac{d}{dt} + 2K_G N + \frac{K_T K_E}{R}
+  \frac{\partial g}{\partial N} = \underbrace{J\frac{d}{dt}}_{\text{Term 1}} + \underbrace{2K_G N\frac{ }{ }}_{\text{Term 2}} + \underbrace{\frac{K_T K_E}{R}}_{\text{Term 3}} - \underbrace{0\frac{ }{ }}_{\text{Term 4}} = J\frac{d}{dt} + 2K_G N + \frac{K_T K_E}{R}
 \end{align*}
 
 Term 1 innehåller en derivering av $N(t)$ med avseende på $t$, men när vi nu partialderiverar $g$, så gör vi det med avseende på $N$. Tidsderiveringen blir alltså kvar, men inte funktionen $N$.
@@ -813,7 +815,8 @@ Vi sätter $\Delta N = N - N_0$ och $\Delta u = u - u_0$:
 Vi vill ha uttrycket på formen $\frac{K}{1 + sT}$. Tidskonstanten som det frågas efter är $T$. Det gäller för oss att algebraiskt arbeta om uttrycket så att vi får det på önskad form.
 
 \begin{align*}
-  \frac{K_T}{RJs + 2 K_G N_0 R + K_T K_E} = \frac{\frac{1}{2 K_G N_0 R + K_T K_E}}{\frac{1}{2 K_G N_0 R + K_T K_E}}\frac{K_T}{RJs + 2 K_G N_0 R + K_T K_E} = \\
+  \frac{K_T}{RJs + 2 K_G N_0 R + K_T K_E} = \\
+  \frac{\frac{1}{2 K_G N_0 R + K_T K_E}}{\frac{1}{2 K_G N_0 R + K_T K_E}}\frac{K_T}{RJs + 2 K_G N_0 R + K_T K_E} = \\
   \frac{\frac{K_T}{2K_G N_0 R + K_T K_E}}{\frac{RJ}{2K_G N_0 R + K_T K_E}s + 1} = \frac{K}{Ts + 1}
 \end{align*}
 
@@ -827,7 +830,7 @@ Varvtalet, $N_0$, står i nämnaren, det vill säga $T$ minskar med ökat varvta
 
 
 \subsection{4a}
-Teorin bakom detta står på \bl{sid 424}.\\\\
+Teorin bakom detta står på \bl{sid 424}.\\
 
 I det allmänna fallet så gäller
 \begin{align*}
