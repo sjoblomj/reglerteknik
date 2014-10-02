@@ -14,7 +14,7 @@
 
 \newcommand{\coursecode}{ERE102}
 \newcommand{\coursename}{Reglerteknik D}
-\newcommand{\doctitle}{Tentalösningar}
+\newcommand{\doctitle}{Tentakit}
 
 \newcommand{\mhb}[1]{$\beta_{\text{#1}}$}     % Mathematics Handbook Beta
 \newcommand{\bl}[1]{$\text{BL}_{\text{#1}}$}  % Bengt Lennartsson
@@ -134,9 +134,9 @@ Det här dokumentet är ett försök till att göra utförliga lösningar till k
 
 Då allt för många av de existerande lösningsförslagen hoppar över mellansteg och samband har det inneburit mycket svårtydda lösningar. Ambitionen med detta dokumentet är att skriva ut alla mellansteg, även de av ren algebraisk natur, så att det blir tydliga lösningar.
 
-Reglerkursen är i första hand svår då den innehåller en stor mängd spridda begrepp som man måste försöka hålla i huvudet och se sambanden mellan. För att slippa hålla ytterligare en massa formler i huvudet så refereras till de formler och sidor i Mathematics Handbook Beta (fifth edition) som är relevanta. Skrivsättet \mhb{sid 62} refererar alltså till sida 62 i Beta. Vid Laplacetransformeringar används skrivsättet \mhb{L47} för att beteckna i detta fall transform 47 ur Laplacetransformtabellen i Beta. Skrivsättet \bl{sid xx} används för att referera till en sida ur Bengt Lennartssons kursbok Reglerteknikens Grunder.
+Reglerkursen är i första hand svår då den innehåller en stor mängd spridda begrepp som man måste försöka hålla i huvudet och se sambanden mellan. För att slippa hålla ytterligare en massa formler i huvudet så ges referenser till de formler och sidor i Mathematics Handbook Beta (fifth edition) som är relevanta. Skrivsättet \mhb{sid 62} refererar alltså till sida 62 i Beta. Vid Laplacetransformeringar används skrivsättet \mhb{L47} för att beteckna i detta fall transform 47 ur Laplacetransformtabellen i Beta. Skrivsättet \bl{sid xx} används för att referera till en sida ur Bengt Lennartssons kursbok Reglerteknikens Grunder.
 
-Beteckningen för den imaginära enheten är slumpvis $i$ och $j$ i dokumentet.\\
+Beteckningen för den imaginära enheten är slumpvis $i$ och $j$ i dokumentet. Handskas med det.\\
 
 Ambitionen med dokumentet är att förklara uppgifter på ett för datateknologer tydligt sätt. Utan tvekan så kommer du ha en massa frågetecken även efter att ha läst uppgifterna, inte minst av karaktären ``vartifrån kommer den här uppställningen?'' eller ``varför ansätter vi problemet på det här viset?''. Hjälp jättegärna till med att förbättra dokumentet! Oavsett vad du kan bidra med så uppmuntras du att förbättra och utöka!\\
 
@@ -146,13 +146,14 @@ Lycka till så ses vi på omtentan!
 
 Det är fritt fram att sprida dokumentet till alla som kan tänkas vilja ha det. Förbättra gärna lösningarna om du kan! Hela dokumentet, såväl som \LaTeX{}-koden är att betrakta som Public Domain.
 
-Observera att lösningarna inte kommer från instutitionen som ger kursen och att de inte blivit felkontrollerade. Svaren kan vara både fel, ha konstig notation och det är inte säkert att de är utförliga nog. Ser du något som du tycker verkar fel eller som du tror är konstigt, så har du förmodligen rätt.
+Observera att lösningarna inte kommer från instutitionen som ger kursen och att de inte blivit felkontrollerade. Svaren kan vara både fel, ha konstig notation och det är inte säkert att de är utförliga nog. Ser du något som du tycker verkar fel eller som du tror är konstigt, så är det förmodligen du som har rätt.
 \\[3mm]
 \horrule{2pt} % Thick horizontal rule
 
 
 \subsection*{Ändringslogg}
 \begin{tabular}{l l p{7cm}}
+  2014-10-03 & Johan Sjöblom & Mindre förtydliganden.\\
   2014-08-21 & Johan Sjöblom & Första versionen.
 \end{tabular}
 
@@ -326,12 +327,12 @@ Detta är alltså enligt (11.15) lika med det karakteristiska polynomet ($\alpha
 
 
 \subsection{1d}
-\emph{Obs! Detta är en skissartad lösning, med en del oklarheter i sig. Den är troligast skriven med delvis inkorrekt matematisk notation, vilket lärare har en tendens att se rött av.}\\\\
+\emph{Obs! Detta är en skissartad lösning, med en del oklarheter i sig. Den är troligast skriven med delvis inkorrekt matematisk notation, vilket tentarättare har en tendens att se rött av.}\\
 
 
 Från bifogat formelblad till tesen:\\
 
-LP $\rightarrow$ HP: $\qquad s \rightarrow \frac{\omega_c}{s}$.\\\\
+LP $\rightarrow$ HP: $\qquad s \rightarrow \frac{\omega_c}{s}$.\\
 
 
 På något sätt så ser vi att när vi utgår från första ordningens Butterworth-filter, så har vi\\
@@ -344,7 +345,7 @@ På något sätt så ser vi att när vi utgår från första ordningens Butterwo
 Nu har vi\\
 \oklarhet{Hur?}
 \begin{align*}
-  H(s) = \frac{1}{1 + \underbrace{s}_{s \rightarrow \frac{\omega_c}{s}}} \rightarrow \frac{1}{1 + \frac{\omega_c}{s}} = \frac{s}{\omega_c + s}
+  H(s) = \frac{1}{1 + \underbrace{s}_{s \rightarrow \frac{\omega_c}{s}}} \rightarrow \frac{1}{1 + \frac{\omega_c}{s}} = \frac{1}{1 + \frac{\omega_c}{s}}\frac{s}{s} = \frac{s}{\omega_c + s}
 \end{align*}
 
 Från bifogat formelblad till tesen så har vi att Tustin-diskretisering innebär:
@@ -363,7 +364,8 @@ På något sätt så ser vi att $\omega_c = 2\pi \cdot 500$ Hz. Vi ljuger oss oc
 
 \begin{align*}
   H(z) = \frac{z-1}{z-1 + \frac{1}{2} 2\pi 500 \cdot (10^4)^{-1} (z+1)} = \frac{z-1}{z-1 + 0.05 \pi (z+1)} = \\
-  \frac{z-1}{(0.05\pi + 1)z + 0.05 \pi -1} = \frac{\frac{1}{(0.05\pi + 1)}(z-1)}{z + \frac{0.05 \pi -1}{(0.05\pi + 1)}} \approx \frac{0.86(z-1)}{z-0.73}\\
+  \frac{z-1}{(0.05\pi + 1)z + 0.05 \pi -1} = \frac{\frac{1}{0.05\pi + 1}}{\frac{1}{0.05\pi + 1}}\frac{z-1}{(0.05\pi + 1)z + 0.05 \pi -1} = \\
+  \frac{\frac{1}{(0.05\pi + 1)}(z-1)}{z + \frac{0.05 \pi -1}{(0.05\pi + 1)}} \approx \frac{0.86(z-1)}{z-0.73}\\
 \end{align*}
 
 \section{Tenta 2013-12-16}
@@ -388,7 +390,7 @@ Vi ser att båda polerna har imaginära delar, men det spelar ingen roll. Det vi
   G_2(s) = \frac{s+3}{s^2+2s} = \frac{s+3}{s(s+2)}
 \end{align*}
 
-Polerna får vi alltså av $s(s+2) = 0$. Vi ser omedelbart att $s_1 = -2$ och $s_2 = 0$. Polen $s_1$ ligger i vänster halvplan, men $s_2$ ligger på 0, och alltså inte strikt i vänster halvplan. $G_2(s)$ är alltså inte stabilt.
+Polerna får vi alltså av $s(s+2) = 0$. Vi ser omedelbart att $s_1 = -2$ och $s_2 = 0$. Polen $s_1$ ligger i vänster halvplan, men $s_2$ ligger på 0, och alltså inte strikt i vänster halvplan. $G_2(s)$ är inte stabilt.
 
 
 \subsection{1b}
@@ -426,7 +428,7 @@ Vi ska bestämma överföringsfunktionen från $\theta_i$ till $\theta_0$. Gyro�
 \end{tikzpicture}\\
 
 
-För att gå vidare behöver vi reducera blockdiagrammet ytterligare. Vi börjar fokusera på den inre återkopplingen (markerad i figuren ovan). Vi kan behandla boxen med $-1$ på två olika sätt.\\
+För att gå vidare behöver vi reducera blockdiagrammet ytterligare. Vi börjar fokusera på den inre återkopplingen (markerad i föregående figur). Vi kan behandla boxen med $-1$ på två olika sätt.\\
 \textbf{Alternativ ett:} Multiplicera in den i boxen med $\frac{1}{1+2s}$ varpå vi får följande:\\
 
 \begin{tikzpicture}[auto, node distance=2cm,>=latex']
@@ -805,14 +807,15 @@ Vi sätter $\Delta N = N - N_0$ och $\Delta u = u - u_0$:
 
 \subsection{3c}
 \oklarhet{Vad gör vi här egentligen?}
+Överföringsfunktionen blir:
 
 \begin{align*}
   \frac{\Delta N(s)}{\Delta u(s)} = \frac{\frac{K_T}{R}}{Js + 2K_G N_0 + \frac{K_T K_E}{R}} = \frac{K_T}{RJs + 2 K_G N_0 R + K_T K_E}
 \end{align*}
 
-\oklarhet{Vartifrån kommer den formen?}
+\oklarhet{Vartifrån kommer formen $\frac{K}{1 + sT}$?}
 
-Vi vill ha uttrycket på formen $\frac{K}{1 + sT}$. Tidskonstanten som det frågas efter är $T$. Det gäller för oss att algebraiskt arbeta om uttrycket så att vi får det på önskad form.
+Vi vill ha uttrycket på formen $\frac{K}{1 + sT}$. Tidskonstanten som det frågas efter i uppgiften är $T$. Det gäller för oss att algebraiskt arbeta om uttrycket så att vi får det på önskad form.
 
 \begin{align*}
   \frac{K_T}{RJs + 2 K_G N_0 R + K_T K_E} = \\
@@ -851,7 +854,7 @@ Då det skall finnas relativ dämpning och naturlig egenfrekvens så ska vi anv�
   G(s) = \frac{\omega_n ^2}{s^2 + 2\zeta \omega_n s + \omega_n^2}
 \end{align*}
 
-Det karakteristiska polynomet för det slutna systemet är alltså för $\zeta = \frac{1}{\sqrt{2}}$ och $\omega_n = \sqrt{2}$:
+Det karakteristiska polynomet, det vill säga nämnaren, för det slutna systemet är alltså för $\zeta = \frac{1}{\sqrt{2}}$ och $\omega_n = \sqrt{2}$:
 
 \begin{align*}
   \alpha_c(s) = s^2 + 2\zeta \omega_n s + \omega_n^2 = s^2 + 2\frac{1}{\sqrt{2}} \sqrt{2} s + (\sqrt{2})^2 = s^2 + 2s + 2
@@ -1013,10 +1016,13 @@ Från (6.30) på \bl{sid 249} ser vi att följande gäller:\\
 
 På \mhb{sid 62} finns det några användbara räkneregler för argument: $\arg\{ z_1 z_2 \} = \arg \{z_1\} + \arg \{z_2\}$ och $\arg\{ \frac{z_1}{z_2} \} = \arg\{ z_1 \} - \arg\{ z_2 \}$.
 
-Överkorsningsfrekvensen ska vara $\omega_c \geq 1$ rad/s. Om vi ansätter problemet med $\omega_c = 1$:
+Överkorsningsfrekvensen ska vara $\omega_c \geq 1$ rad/s. Vi ansätter problemet med $\omega_c = 1$, och går över från s-domänen till Frekvensdomänen.
 
 \begin{align*}
-  \arg\{G(j\cdot 1)\} = \arg\{e^{-j\cdot 1}\} - (\arg\{j\cdot 1\} + \arg\{j\cdot 1 + 1\})
+  G(s) = \frac{e^{-s}}{s(s+1)} \rightarrow G(j\omega) = \frac{e^{-j\omega}}{j\omega(j\omega + 1)}\\
+  \arg\{G(j\omega)\}  = \arg \left\{\frac{e^{-j\omega}}{j\omega(j\omega + 1)} \right \} = \arg\{e^{-j\omega}\} - \arg\{j\omega(j\omega + 1)\} =\\
+  \arg\{e^{-j\omega}\} - \arg\{j\omega\} + \arg\{j\omega + 1\} = \\
+  \arg\{G(j\omega_c)\} = \arg\{G(j\cdot 1)\} = \arg\{e^{-j\cdot 1}\} - (\arg\{j\cdot 1\} + \arg\{j\cdot 1 + 1\})
 \end{align*}
 
 På \mhb{sid 62} ser vi att $\arg\{e^{i\theta}\} = \theta$. Hur vi räknar ut $\arg\{ G(i\omega) \}$ framgår av \mhb{sid 62}: $\arg\{z\} = \arctan{\frac{\text{Im\{z\}}}{\text{Re\{z\}}}}$.
@@ -1162,7 +1168,7 @@ Vi kan nu ställa upp överföringsfunktionerna:
   \text{III.} & \frac{\Delta(s)}{\Theta(s)} &= \frac{-k_1 - k_2 s - k_3 s^2}{s^2} = -\frac{k_1}{s^2} - \frac{k_2}{s} - k_3
 \end{eqnarray*}
 
-Vi vet att $s$-termer är deriverande och $\frac{1}{s}$-termer är integrerande. Vi ser att i \mbox{typ I} så finns enbart $s$-termer, vilket motsvarar en PD-regulator. I typ II så finns $s$- och $\frac{1}{s}$-termer, vilket motsvarar en PID-regulator. I typ III så finns enbart $\frac{1}{s}$-termer, vilket motsvarar en PD-regulator.
+Vi vet att $s$-termer är deriverande och $\frac{1}{s}$-termer är integrerande. Vi ser att i \mbox{typ I} så finns enbart $s$-termer, vilket motsvarar en PD-regulator. I typ II så finns $s$- och $\frac{1}{s}$-termer, vilket motsvarar en PID-regulator. I typ III så finns enbart $\frac{1}{s}$-termer, vilket motsvarar en PI-regulator.
 
 
 \subsection{3a}
@@ -1197,13 +1203,13 @@ Detta är alltså det kvarstående felet, och då det enligt uppgiften skall eli
   \frac{1}{F(0)} = 0
 \end{align*}
 
-Detta gäller när $s$ går mot noll. Vi ser att det bara finns ett sätt att uppfylla den likheten, nämligen genom att $F(s)$ är ett bråk med en $s$-term i nämnaren. Med slarvig notation gäller alltså följande:
+Detta gäller när $s$ går mot noll. Vi ser att det bara finns ett sätt att uppfylla den likheten, nämligen genom att $F(s)$ innehåller ett bråk med en $s$-term i nämnaren. Följande gäller alltså:
 
 \begin{align*}
-  \frac{1}{F(s)} = \frac{1}{\frac{1}{s}} = s
+  \frac{1}{F(s)} = \frac{1}{\frac{1}{s}F_0(s)} = \frac{s}{F_0(s)},
 \end{align*}
 
-Att $F(s)$ har en $\frac{1}{s}$-term innebär att $F(s)$ innehåller en integrering. Observera dock att vi med vårt resonemang ovan enbart har konstaterat att $F(s)$ innehåller en $\frac{1}{s}$-term, inte att $F(s) = \frac{1}{s}$.
+där $F_0(s)$, lite slarvigt uttryckt, betecknar ``funktionen $F(s)$, med $\frac{1}{s}$-termen utlöst''. Att $F(s)$ har en $\frac{1}{s}$-term innebär att $F(s)$ innehåller en integrering.
 
 
 \subsection{3b}
@@ -1227,7 +1233,7 @@ Vi vet alltså att $\arg \{ G(i\omega) \} = -90^\circ -2\arctan\frac{\omega}{4}$
   -90^\circ -2\arctan\frac{\omega_{150}}{4} = -150^\circ \Longleftrightarrow\\
   \arctan\frac{\omega_{150}}{4} = \frac{150^\circ - 90^\circ}{2} \Longleftrightarrow\\
   \frac{\omega_{150}}{4} = \tan 30^\circ \Longleftrightarrow\\
-  \omega_{150} = 4\tan 30^\circ \approx 2.3 \text{rad/s}\\
+  \omega_{150} = 4\tan 30^\circ
 \end{align*}
 
 Vi ska bestämma överkorsningsfrekvensen $\omega_c$, och enligt uppgiften så gäller $\omega_c = 0.4\omega_{150} = 0.4 \cdot 4\tan 30^\circ \approx 0.9$ rad/s.
@@ -1439,7 +1445,7 @@ Vi antar att vi har en rationell funktion (det vill säga en kvot av två polyno
   $(s^2 + as + b)^n$ & $\frac{B_1s + C_1}{s^2 + as + b} + \frac{B_2s + C_2}{(s^2 + as + b)^2} + ... + \frac{B_ns + C_n}{(s^2 + as + b)^n}$
 \end{tabular}\\\\
 
-I \mhb{sid 120} står detta kort nämnt, så man behöver inte memorera det utantill. Sätter man samtliga partialbråk på gemensam nämnare så får man ett ekvationssystem med entydig lösning. Exempel:
+På \mhb{sid 120} står detta kort nämnt, så man behöver inte memorera det utantill. Sätter man samtliga partialbråk på gemensam nämnare så får man ett ekvationssystem med entydig lösning. Exempel:
 
 \begin{align}
   \frac{2s^2 + s -3}{(s+1)^2(s+2)} &= \frac{A_1}{s+1} + \frac{A_2}{(s+1)^2} + \frac{A_3}{s+2} \label{eqn:partfracA}\\
